@@ -2,7 +2,7 @@ import open3d as o3d
 import numpy as np
 import pandas
 
-pcd = o3d.io.read_point_cloud("face.ply")
+pcd = o3d.io.read_point_cloud("sample_data/face.ply")
 vis = o3d.visualization.VisualizerWithEditing() 
 vis.create_window()
 vis.add_geometry(pcd)
