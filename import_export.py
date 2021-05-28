@@ -13,22 +13,22 @@ class InvalidFormatError:
     pass
 
 
-"""
-Returns a list of the valid formats
-"""
+
 def getFormats():
+    """
+    :returns: list(str): list of the valid file input types
+    """
     formats = ["xyzrgb_normals"]
     return formats
 
 
-"""
-:param name: writer - TextIoWrapper obtained from running open(filename, "w")
-:param type: TextIoWrapper
-:param name: format - Format of the file being written to
-:param type: str
-:returns: None
-"""
+
 def write_header(writer,format):
+    """
+    :param writer:  TextIoWrapper obtained from running open(filename, "w")
+    :param format:  String representing the format of the file being written to
+    :returns: None
+    """
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
     if not isinstance(format, str):
@@ -50,17 +50,25 @@ the appropriate format. Will raise ValueError() for invalid parameters,
 and InvalidFormatError for an invalid format.
 '''
 def write_contents(reader, writer, format):
+    """
+    :param reader: TextIoWrapper obtained from running open(filename, "r")
+    :param writer: TextIoWrapper obtained from running open(filename, "w")
+    :param format: Format of the file being written to
+    :returns: None\n
+    """
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
     if not isinstance(format, str):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'r') function to obtain w")
     if not isinstance(reader, TextIOWrapper):
         raise ValueError()
+
     if format == "xyzrgb_normals":
         totalCount = 0
         missedLines = 0
-        parts = line.split()
-        for line in r:
+
+        for line in reader:
+            parts = line.split()
             if len(line.split()) != 9:
                 #position
                 output = parts[0] + " " + parts[1] + " " + parts[2] + " "
@@ -74,5 +82,5 @@ def write_contents(reader, writer, format):
             else:
                 missedLines += 1
             if(totalCount % 1e6 == 0):
-                print(str(totalCount) + "/" + str(lineCount) + " processed (" + "{:.1f}".format(100 * totalCount / lineCount) + "%)")
+                print(str(totalCount) + "lines processed ")
     return

@@ -6,9 +6,6 @@
 Welcome to GeoPointCloud's documentation!
 =========================================
 
-.. automodule:: import_export
-   :members:
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
