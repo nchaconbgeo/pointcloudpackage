@@ -2,19 +2,33 @@ import open3d as o3d
 import numpy as np
 import pandas
 
-
-
-def crop_volume():
-    print("3) Drag for rectangle selection for cropping functionality, or use ctrl + left click for polygon selection")
-    print("4) Press 'C' to get a selected geometry and to save it")
-    #todo
-
 def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_bounding_box = True, show_line_set = True, show_complex_hull = True, recolor_cropped_cloud = True, color_of_cropped_cloud = None):
-    #Preprocessing
+    """
+    Returns a open3d.geometry.PointCloud that represents the volume selected by the user in the point selection window. This function initially opens a 
+    visualizer for the user to select points to form a bounding polygon for the volume using shift + left click (the user can also use shift + right click to undo the last selected point).
+    After the selection is made and the user presses 'q' to quit the current window, the function will perform calculations draw geometries in a separate visualizer as directed by the user in the arguments.  
+    :param name: pcd
+    :param type: open3d.geometry.PointCloud
+    :param name: show_axis_aligned_bounding_box
+    :param type: bool
+    :param name: show_oriented_bounding_box
+    :param type: bool
+    :param name: show_line_set
+    :param type: bool
+    :param name: show_complex_hull
+    :param type: bool
+    :param name: recolor_cropped_cloud
+    :param type: bool
+    :param name: color_of_cropped_cloud 
+    :param type: list
+    :return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
+    :rtype: open3d.geometry.PointCloud
+    """
+
     vis = o3d.visualization.VisualizerWithEditing() 
     vis.create_window()
     vis.add_geometry(pcd)
-    print("To select vertices for your volume, press shift + left click, press shift + right click to delete a selection\n")
+    print("To select vertices for your cropped volume, press shift + left click; press shift + right click to delete a selection\n")
     print("1) Press 'Y' twice to align geometry with negative direction of y-axis")
     print("2) Press 'K' to lock screen and to switch to selection mode")
     print("3) Press 'F' to switch to freeview mode")
@@ -99,5 +113,20 @@ def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_b
 
     return uncolored_cropped_pcd
 
-point_cloud = o3d.io.read_point_cloud("./sample_data/face.ply")
+def crop_volume(pcd):
+    """
+    Returns a cropped point cloud object of type open3d.geometry.PointCloud. 
+    This function opens a window for the user to select points to form a bounding polygon for the volume using shift + left click 
+    (the user can also use shift + right click to undo the last selected point). This function will return a cropped Point Cloud holding all points 
+    inside of the user-selected volume. 
+    :param name: pcd
+    :param type: open3d.geometry.PointCloud
+    :return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
+    :rtype: open3d.geometry.PointCloud
+    """ 
+    return volume_selection(pcd, False, False, False, False, False, None)
+
+point_cloud = o3d.io.read_point_cloud("../sample_data/face.ply")
 cropped_pcd = volume_selection(point_cloud, False, False, False, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
+# cropped_pcd = volume_selection(point_cloud, True, True, True, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
+# cropped_pcd = volume_selection(point_cloud, True, True, True, True, False, color_of_cropped_cloud = [0.2, 0.2, .2])
