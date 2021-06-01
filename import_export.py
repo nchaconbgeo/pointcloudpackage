@@ -13,14 +13,12 @@ class InvalidFormatError:
     pass
 
 
-
 def getFormats():
     """
     :returns: list(str): list of the valid file input types
     """
     formats = ["xyzrgb_normals"]
     return formats
-
 
 
 def write_header(writer,format):
