@@ -49,6 +49,7 @@ and InvalidFormatError for an invalid format.
 '''
 def write_contents(reader, writer, format):
     """
+    :description: Responsible for writing the numeric contents of the given txt file to the pcd file
     :param reader: TextIoWrapper obtained from running open(filename, "r")
     :param writer: TextIoWrapper obtained from running open(filename, "w")
     :param format: Format of the file being written to
