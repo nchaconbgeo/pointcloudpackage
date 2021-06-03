@@ -8,7 +8,7 @@ import open3d as o3d
 import numpy as np
 import pandas
 
-def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_bounding_box = True, show_line_set = True, show_complex_hull = True, recolor_cropped_cloud = True, color_of_cropped_cloud = None):
+def volume_selection(pcd, show_line_set = True, recolor_cropped_cloud = True, color_of_cropped_cloud = None):
     """
     :description: Returns a open3d.geometry.PointCloud that represents the volume selected by the user in the point selection window. This function initially opens a 
     visualizer for the user to select points to form a bounding polygon for the volume using shift + left click (the user can also use shift + right click to undo the last selected point).
@@ -24,8 +24,7 @@ def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_b
     :return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
     :rtype: open3d.geometry.PointCloud
     """
-
- 
+    
     vis = o3d.visualization.VisualizerWithEditing() 
     '''a VisualizerWithEditing() object is the first object allows us to select points to use 
     for cropping geometries and generating polygons. there are several different Visualizer() types in open3d, 
@@ -83,8 +82,6 @@ def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_b
     cropped_pcd = vol.crop_point_cloud(pcd)
     uncolored_cropped_pcd = vol.crop_point_cloud(pcd)
 
-
-
     if(show_line_set):
         print("drawing lines....\n")
         #to define a LineSet() geometry type you need colors, points, and lines 
@@ -102,24 +99,6 @@ def volume_selection(pcd, show_axis_aligned_bounding_box = True, show_oriented_b
  
     geometries.append(pcd)
     geometries.append(cropped_pcd)
-
-    if(show_axis_aligned_bounding_box):
-        print("drawing axis-aligned bounding box....\n")
-        axis_aligned_bounding_box = cropped_pcd.get_axis_aligned_bounding_box()
-        axis_aligned_bounding_box.color = (1, 0, 1)
-        geometries.append(axis_aligned_bounding_box)
-
-    if(show_oriented_bounding_box):
-        print("drawing oriented bounding box....\n")
-        obb = cropped_pcd.get_oriented_bounding_box()
-        obb.color = (0, 1, 1)
-
-    if(show_complex_hull and len(linepoints) >= 4):
-        print("creating complex hull....\n")
-        hull, _ = cropped_pcd.compute_convex_hull()
-        hull_ls = o3d.geometry.LineSet.create_from_triangle_mesh(hull)
-        hull_ls.paint_uniform_color((0.5, 1, 0.5))
-        geometries.append(hull_ls)
 
     #appending the original pcd such that the cropped geometry is printed with priority.
    
@@ -153,4 +132,4 @@ point_cloud = o3d.io.read_point_cloud("./sample_data/face.ply")
 # cropped_pcd = volume_selection(point_cloud, True, True, True, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
 
 # No hull, just box and line set. 
-cropped_pcd = volume_selection(point_cloud, False, False, True, False, True, color_of_cropped_cloud = [0.2, 0.2, .2])
+cropped_pcd = volume_selection(point_cloud, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
