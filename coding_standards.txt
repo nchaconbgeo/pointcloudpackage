@@ -1,0 +1,34 @@
+Constants: All caps snakecase
+	- Example: GLOBAL_CONSTANT = 1
+Classes: 
+	- Name: Upper camel case
+	- 
+Variable/parameters: lower camel case
+	- Example: myVariable = "hello"
+
+Comment formats:
+Inline comments: Used to brefily describe functionality of a portion
+of code.  Should typically be used like a label
+
+Doc strings:
+
+	Functions:
+		:Description: <Description of what this function does>
+		:param <parameter 1>: (parameter type): parameter description
+		.
+		.
+		:param <parameter n>:
+		:Raises <exception 1>: <How this exception might be raised>
+		.
+		.
+		:Raises <exception n>:
+		:Returns: <Value type returned>
+	
+	Classes: Each member of a class should be documented following the above documentation style
+		:Descrption: <Description of what the class represents, as well as what other classes
+				this class may interact with>
+		:member functions: List of key member forunctions
+
+	Enums:
+		-Naming: Naming should follow same naming scheme as classes
+		-Type naming: All caps snakecase

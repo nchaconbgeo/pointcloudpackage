@@ -40,14 +40,71 @@
 <dt class="sig sig-object py" id="import_export.InvalidFormatError">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">InvalidFormatError</span></span><a class="headerlink" href="#import_export.InvalidFormatError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Raised when the user specifies an invalid file format</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="import_export.getFormats">
-<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getFormats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getFormats" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="import_export.getInputFormats">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getInputFormats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getInputFormats" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>list(str): list of the valid file input types</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.getOutputFormats">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getOutputFormats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getOutputFormats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list(str): list of the valid pcd files to produce</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.get_pcd">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">get_pcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pcdFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.get_pcd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pcdFile</strong> – Path to the pcdfile to create a pcd object of.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pcd object that can be used for open3d visualization</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError: If file does not contain appropriate extension</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.txt_to_pcd">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">txt_to_pcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pcdfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputFormat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xyzrgb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.txt_to_pcd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Converts the given text file to a pcd file suitible to be read in by Open3d</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>textfile</strong> – Path to the textfile to be converted (String)</p></li>
+<li><p><strong>pcdfile</strong> – Path where the output pcd file should be stored (String)</p></li>
+<li><p><strong>inputFormat</strong> – The current format of the given input file (columns are assumed to be space separated)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">OutputFormat</dt>
+<dd class="field-odd"><p>The desired output format of the given pcd file (Defaults to xyzrgb)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError</p>
 </dd>
 </dl>
 </dd></dl>

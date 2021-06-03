@@ -3,13 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GeoPointCloud's documentation!
+GeoPointCloud's code documentation
 =========================================
 
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
 
+This page contains documentation for the source code for GeoPointCloud
 
 Indices and tables
 ==================

@@ -31,8 +31,51 @@
 
           <div class="body" role="main">
             
-  <section id="polygon-experimentation-module">
-<h1>polygon_experimentation module<a class="headerlink" href="#polygon-experimentation-module" title="Permalink to this headline">¶</a></h1>
+  <section id="module-polygon_experimentation">
+<span id="polygon-experimentation-module"></span><h1>polygon_experimentation module<a class="headerlink" href="#module-polygon_experimentation" title="Permalink to this headline">¶</a></h1>
+<section id="visualization-package">
+<h2>Visualization Package<a class="headerlink" href="#visualization-package" title="Permalink to this headline">¶</a></h2>
+<p>This package contains functionality for visualizations and visual point cloud manipulation.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="polygon_experimentation.crop_volume">
+<span class="sig-prename descclassname"><span class="pre">polygon_experimentation.</span></span><span class="sig-name descname"><span class="pre">crop_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pcd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polygon_experimentation.crop_volume" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Returns a cropped point cloud object of type open3d.geometry.PointCloud.</p>
+</dd>
+</dl>
+<p>This function opens a window for the user to select points to form a bounding polygon for the volume using shift + left click 
+(the user can also use shift + right click to undo the last selected point). This function will return a cropped Point Cloud holding all points 
+inside of the user-selected volume. 
+:param name: pcd
+:param type: open3d.geometry.PointCloud
+:return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
+:rtype: open3d.geometry.PointCloud</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polygon_experimentation.volume_selection">
+<span class="sig-prename descclassname"><span class="pre">polygon_experimentation.</span></span><span class="sig-name descname"><span class="pre">volume_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pcd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_axis_aligned_bounding_box</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_oriented_bounding_box</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_line_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_complex_hull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recolor_cropped_cloud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_of_cropped_cloud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polygon_experimentation.volume_selection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Returns a open3d.geometry.PointCloud that represents the volume selected by the user in the point selection window. This function initially opens a</p>
+</dd>
+</dl>
+<p>visualizer for the user to select points to form a bounding polygon for the volume using shift + left click (the user can also use shift + right click to undo the last selected point).
+After the selection is made and the user presses ‘q’ to quit the current window, the function will perform calculations draw geometries in a separate visualizer as directed by the user in the arguments.  
+:param name: pcd (open3d.geometry.PointCloud)
+:param name: show_axis_aligned_bounding_box (bool)
+:param name: show_oriented_bounding_box(bool)
+:param name: show_line_set (bool)
+:param name: show_complex_hull (bool)
+:param name: recolor_cropped_cloud (bool)
+:param name: color_of_cropped_cloud 
+:param type: list
+:return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
+:rtype: open3d.geometry.PointCloud</p>
+</dd></dl>
+
+</section>
 </section>
 
 
