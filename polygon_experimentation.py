@@ -123,13 +123,4 @@ def crop_volume(pcd):
     """ 
     return volume_selection(pcd, False, False, False, False, False, None)
 
-# point_cloud = o3d.io.read_point_cloud("./sample_data/face.ply")
 
-#Hull and cropped cloud
-#ropped_pcd = volume_selection(point_cloud, False, False, False, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
-
-#All possible geometries
-# cropped_pcd = volume_selection(point_cloud, True, True, True, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
-
-# No hull, just box and line set. 
-cropped_pcd = volume_selection(point_cloud, True, True, color_of_cropped_cloud = [0.2, 0.2, .2])
