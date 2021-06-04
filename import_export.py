@@ -9,7 +9,10 @@ import open3d as o3d
 from enum import Enum
 
 def getValidTokens():
-    return ['x', 'y', 'z', 'r', 'g', 'b', 'rgb', 'nx', 'ny', 'nz']
+    """
+    :Returns: List of strings representing the valid tokens for file input
+    """
+    return ['x', 'y', 'z', 'r', 'g', 'b', 'rgb', 'normal_x', 'normal_y', 'normal_z']
 
 class InvalidFormatError:
     """
@@ -17,11 +20,11 @@ class InvalidFormatError:
     """
     pass
 
-def write_header(writer,format, lineCount):
+def write_header(writer, format, lineCount):
     """
     :param writer:  TextIoWrapper obtained from running open(filename, "w")
     :param format:  String representing the format of the file being written to
-    :returns: Dictionary (int -> str). map of the indecies of values to their types
+    :returns: dict() of tokens mapped with indecies
     """
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
@@ -33,31 +36,56 @@ def write_header(writer,format, lineCount):
     writer.write("FIELDS ")
     splitFormat = format.split()
     validTokens = getValidTokens()
-    headerIndecies = {}
+    tokenToIndex = {}       #maps the token to the index at which it is found
+    typeContents = ""
+    appendToEnd = False
     for index, token in enumerate(splitFormat):
+        token = token.lower()
         if token in validTokens:
-            if not  ('r' in token.lower() or 'g' in token.lower() or 'b' in token.lower()):
-                headerIndecies[token.lower()] = 'F'
+            tokenToIndex[token] = index
+            if token == 'r' or token == 'g' or token == 'b':
+                appendToEnd = True
+            elif token == "rgb":
+                if index == 0:
+                    typeContents += "U"
+                else:
+                    typeContents += " U"
             else:
-                headerIndecies[token.lower()] - 'I'
-            headerIndecies.append(index)
-            writer.write(token)
+                if index == 0:
+                    typeContents = "F"
+                    writer.write(token)
+                else:
+                    typeContents += " F"
+                    writer.write(" " + token)
+    if appendToEnd:
+        typeContents += " U"
+        writer.write(" rgb")
+            
     writer.write('\n')
     #write byte size for each fields
     writer.write("SIZE")
-    for i in range(0,len(headerIndecies)):
+    for i in range(0,len(typeContents.split())):
         writer.write(" 4")
     writer.write('\n')
     #write value types
-    writer.write("TYPE")
-    for key in headerIndecies.keys:
-        writer.write(" " + headerIndecies[key])
-    writer.write("\n")
-    #write writer counts
+    writer.write("TYPE ")
+    writer.write(typeContents + '\n')
+    #write field counts
     writer.write("COUNT")
-    for i in range(0,len(headerIndecies)):
+    for i in range(0,len(typeContents.split())):
         writer.write(" 1")
     writer.write('\n')
+    #write width
+    writer.write("WIDTH " + str(lineCount) + '\n')
+    writer.write("HEIGHT 1\n")
+
+    writer.write("VIEWPOINT 0 0 0 1 0 0 0\n")
+
+    writer.write("POINTS " + str(lineCount) + '\n')
+
+    writer.write("DATA ascii\n")
+
+    return tokenToIndex
     
 
 
@@ -66,37 +94,55 @@ def write_contents(reader, writer, format):
     :description: Responsible for writing the numeric contents of the given txt file to the pcd file
     :param reader: TextIoWrapper obtained from running open(filename, "r")
     :param writer: TextIoWrapper obtained from running open(filename, "w")
-    :param format: Format of the file being written to.  Can be any combination of the following tokens: \
-                    x, y, z, r, g, b, rgb, Nx, Ny, Nz
+    :param format: Dictionary of format tokens to indecies.
     :returns: None\n
     """
     if not isinstance(writer, TextIOWrapper):
-        raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
-    if not isinstance(format, str):
-        raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'r') function to obtain w")
+        raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain writer")
+    if not isinstance(format, dict):
+        raise ValueError("Format is expected to be of type dict.")
     if not isinstance(reader, TextIOWrapper):
-        raise ValueError()
+        raise ValueError("reader must be of type TextIOWrapper.\n Use the open(filename, 'r') function to obtain writer")
 
-    if format == "xyzrgb_normals":
-        totalCount = 0
-        missedLines = 0
+    totalCount = 0
+    missedLines = 0
 
-        for line in reader:
-            parts = line.split()
-            if len(line.split()) != 9:
-                #position
-                output = parts[0] + " " + parts[1] + " " + parts[2] + " "
-                #rgb
-                output += str( int(parts[3]) * 256 ** 2 +int(parts[4]) * 256 ** 1 + int(parts[5])) + " "
-                output += parts[-3] + " " + parts[-2] + " " + parts[-1]
-                writer.write(output + "\n")
-                totalCount += 1
-            elif missedLines > 100:
-                raise InvalidFormatError("File does not appear to be in specified format.  Check to ensure there are no blank lines")
-            else:
-                missedLines += 1
-            if(totalCount % 1e6 == 0):
-                print(str(totalCount) + "lines processed ")
+    for line in reader:
+        parts = line.split()
+        rgbVals = [-1, -1, -1]
+        if len(parts) < len(format) and missedLines > 100:
+            raise InvalidFormatError("File does not match format provided")
+        elif len(parts) < len(format):
+            missedLines += 1
+            continue
+        for index, token in enumerate(format.keys()):
+            if token == 'r':
+                rgbVals[0] = int(parts[format[token]])
+            elif token == 'g':
+                rgbVals[1] = int(parts[format[token]])
+            elif token == 'b':
+                rgbVals[2] = int(parts[format[token]])
+
+            if not (token == "r" or token =="g" or token == "b"):
+                if index == 0:
+                    writer.write(parts[format[token]])
+                else:
+                    writer.write(" " + parts[format[token]])
+        #check to ensure all r, g, and b values are present
+        if rgbVals[0] == -1:
+            rgbVals[0] = 0
+        if rgbVals[1] == -1:
+            rgbVals[1] = 0
+        if rgbVals[2] == -1:
+            rgbVals[2] = 0
+        #calculate singular rgb value if relevant
+        if not (rgbVals[0] == 0 and rgbVals[1] == 0 and rgbVals[2] == 0):
+            writer.write(' ' + str( rgbVals[0] * 256 ** 2 + rgbVals[1] * 256 ** 1 + rgbVals[2]))
+        
+        writer.write('\n')
+        totalCount += 1
+        if(totalCount % 1e6 == 0):
+            print(str(totalCount) + " lines processed ")
     return
 
 def get_pcd(pcdFile):
@@ -110,13 +156,13 @@ def get_pcd(pcdFile):
 
     return o3d.io.read_point_cloud(pcdFile)
 
-def txt_to_pcd(textfile, pcdfile, inputFormat, outputFormat="xyzrgb"):
+def txt_to_pcd(textfile, pcdfile, inputFormat):
     """
     :Description: Converts the given text file to a pcd file suitible to be read in by Open3d
     :param textfile: Path to the textfile to be converted (String)
     :param pcdfile: Path where the output pcd file should be stored (String)
-    :param inputFormat: The current format of the given input file (columns are assumed to be space separated)
-    :outputFormat: The desired output format of the given pcd file (Defaults to xyzrgb)
+    :param inputFormat: Format of the file being read from (str).  Can be any combination of the following tokens: \
+                    x, y, z, r, g, b, rgb, Nx, Ny, Nz
     :Returns: None
     :Raises: ValueError
     """
@@ -136,13 +182,9 @@ def txt_to_pcd(textfile, pcdfile, inputFormat, outputFormat="xyzrgb"):
     reader = open(textfile, "r")
     writer = open(pcdfile, "w+")
 
-    write_header(write_header, format)
+    indexList = write_header(writer, inputFormat, lineCount)
 
-    write_contents(reader, writer, lineCount)
+    write_contents(reader, writer, indexList)
 
     reader.close()
     writer.close()
-
-
-
-    
