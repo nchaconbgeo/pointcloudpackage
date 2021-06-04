@@ -8,7 +8,7 @@ import open3d as o3d
 import numpy as np
 import pandas
 
-def volume_selection(pcd, show_line_set = True, recolor_cropped_cloud = True, color_of_cropped_cloud = None):
+def volumeSelection(pcd, show_line_set = True, recolor_cropped_cloud = True, color_of_cropped_cloud = None):
     """
     :description: Returns a open3d.geometry.PointCloud that represents the volume selected by the user in the point selection window. This function initially opens a 
     visualizer for the user to select points to form a bounding polygon for the volume using shift + left click (the user can also use shift + right click to undo the last selected point).
@@ -110,7 +110,7 @@ def volume_selection(pcd, show_line_set = True, recolor_cropped_cloud = True, co
 
     return uncolored_cropped_pcd
 
-def crop_volume(pcd):
+def cropVolume(pcd):
     """
     :description: Returns a cropped point cloud object of type open3d.geometry.PointCloud. 
     This function opens a window for the user to select points to form a bounding polygon for the volume using shift + left click 
@@ -121,6 +121,6 @@ def crop_volume(pcd):
     :return: point cloud of type open3d.geometry.PointCloud representing the volume selected by the user.
     :rtype: open3d.geometry.PointCloud
     """ 
-    return volume_selection(pcd, False, False, False, False, False, None)
+    return volumeSelection(pcd, False, False, False, False, False, None)
 
 
