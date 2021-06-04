@@ -1,13 +1,17 @@
-from import_export import *
 import open3d as o3d
+import numpy as np
 
-format = "x y z r g b alpha nx ny nz"
-print("initiating file processesing")
-txt_to_pcd("C:/Users/specs/Open3D_PC/Mudstone.txt", "C:/Users/specs/Open3D_PC/Mudstone1.pcd", format)
-print("finished importing file")
+# format = "x y z r g b alpha nx ny nz"
+# print("initiating file processesing")
+# txt_to_pcd("C:/Users/specs/Open3D_PC/Mudstone.txt", "C:/Users/specs/Open3D_PC/Mudstone1.pcd", format)
+# print("finished importing file")
+
 # pcd = get_pcd("C:/Users/specs/Open3D_PC/Mudstone1.pcd")
+# original_colors = []
+# original_colors = pcd.colors
+# labels = np.zeros(len(pcd.points))
 
-# print(pcd)
+
 
 # o3d.visualization.draw_geometries([pcd],
                                 #   zoom=0.3412,
