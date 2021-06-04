@@ -24,7 +24,7 @@ def write_header(writer, format, lineCount):
     """
     :param writer:  TextIoWrapper obtained from running open(filename, "w")
     :param format:  String representing the format of the file being written to
-    :returns: dict() of tokens mapped with indecies
+    :returns: dict() of tokens mapped with indices
     """
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
@@ -94,7 +94,7 @@ def write_contents(reader, writer, format):
     :description: Responsible for writing the numeric contents of the given txt file to the pcd file
     :param reader: TextIoWrapper obtained from running open(filename, "r")
     :param writer: TextIoWrapper obtained from running open(filename, "w")
-    :param format: Dictionary of format tokens to indecies.
+    :param format: Dictionary of format tokens to indices.
     :returns: None\n
     """
     if not isinstance(writer, TextIOWrapper):
