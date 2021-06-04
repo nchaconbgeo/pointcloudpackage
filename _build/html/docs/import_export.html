@@ -48,21 +48,11 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="import_export.getInputFormats">
-<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getInputFormats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getInputFormats" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="import_export.getValidTokens">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getValidTokens</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getValidTokens" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>list(str): list of the valid file input types</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="import_export.getOutputFormats">
-<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getOutputFormats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getOutputFormats" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>list(str): list of the valid pcd files to produce</p>
+<dd class="field-odd"><p>List of strings representing the valid tokens for file input</p>
 </dd>
 </dl>
 </dd></dl>
@@ -85,7 +75,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="import_export.txt_to_pcd">
-<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">txt_to_pcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pcdfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputFormat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xyzrgb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.txt_to_pcd" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">txt_to_pcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pcdfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputFormat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.txt_to_pcd" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Description</dt>
 <dd class="field-odd"><p>Converts the given text file to a pcd file suitible to be read in by Open3d</p>
@@ -94,17 +84,14 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>textfile</strong> – Path to the textfile to be converted (String)</p></li>
 <li><p><strong>pcdfile</strong> – Path where the output pcd file should be stored (String)</p></li>
-<li><p><strong>inputFormat</strong> – The current format of the given input file (columns are assumed to be space separated)</p></li>
+<li><p><strong>inputFormat</strong> – Format of the file being read from (str).  Can be any combination of the following tokens:                     x, y, z, r, g, b, rgb, Nx, Ny, Nz</p></li>
 </ul>
 </dd>
-<dt class="field-odd">OutputFormat</dt>
-<dd class="field-odd"><p>The desired output format of the given pcd file (Defaults to xyzrgb)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p>ValueError</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
 </dd>
 </dl>
 </dd></dl>
@@ -120,7 +107,7 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>reader</strong> – TextIoWrapper obtained from running open(filename, “r”)</p></li>
 <li><p><strong>writer</strong> – TextIoWrapper obtained from running open(filename, “w”)</p></li>
-<li><p><strong>format</strong> – Format of the file being written to</p></li>
+<li><p><strong>format</strong> – Dictionary of format tokens to indices.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns</dt>
@@ -131,7 +118,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="import_export.write_header">
-<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">write_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.write_header" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">write_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.write_header" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -140,7 +127,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p>dict() of tokens mapped with indices</p>
 </dd>
 </dl>
 </dd></dl>

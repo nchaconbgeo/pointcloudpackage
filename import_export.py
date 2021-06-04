@@ -156,7 +156,7 @@ def get_pcd(pcdFile):
 
     return o3d.io.read_point_cloud(pcdFile)
 
-def txt_to_pcd(textfile, pcdfile, inputFormat):
+def txt_to_pcd(textFile, pcdFile, inputFormat):
     """
     :Description: Converts the given text file to a pcd file suitible to be read in by Open3d
     :param textfile: Path to the textfile to be converted (String)
@@ -166,20 +166,20 @@ def txt_to_pcd(textfile, pcdfile, inputFormat):
     :Returns: None
     :Raises: ValueError
     """
-    if not '.' in textfile or not isinstance(textfile, str):
+    if not '.' in textFile or not isinstance(textFile, str):
         raise ValueError("Invalid path.  Please ensure your file has the .txt extension")
     
-    if not ".pcd" in pcdfile:   # append appropriate extension if not present
-        pcdfile = pcdfile + ".pcd"
+    if not ".pcd" in pcdFile:   # append appropriate extension if not present
+        pcdfile = pcdFile + ".pcd"
     
-    reader = open(textfile, "r")
+    reader = open(textFile, "r")
 
     lineCount = 0
     for line in reader:
         lineCount += 1
     reader.close()
 
-    reader = open(textfile, "r")
+    reader = open(textFile, "r")
     writer = open(pcdfile, "w+")
 
     indexList = write_header(writer, inputFormat, lineCount)
@@ -188,3 +188,5 @@ def txt_to_pcd(textfile, pcdfile, inputFormat):
 
     reader.close()
     writer.close()
+
+
