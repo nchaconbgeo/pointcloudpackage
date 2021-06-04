@@ -1,3 +1,4 @@
+
 """
 Import/Export package
 --------------------------
@@ -8,88 +9,60 @@ from io import TextIOWrapper
 import open3d as o3d
 from enum import Enum
 
-def getValidTokens():
-    """
-    :Returns: List of strings representing the valid tokens for file input
-    """
-    return ['x', 'y', 'z', 'r', 'g', 'b', 'rgb', 'normal_x', 'normal_y', 'normal_z']
-
 class InvalidFormatError:
     """
     :Description: Raised when the user specifies an invalid file format
     """
     pass
 
-def write_header(writer, format, lineCount):
-    """
-    :param writer:  TextIoWrapper obtained from running open(filename, "w")
-    :param format:  String representing the format of the file being written to
-    :returns: dict() of tokens mapped with indices
-    """
-    if not isinstance(writer, TextIOWrapper):
-        raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain w")
-    if not isinstance(format, str):
-        raise ValueError()
-    writer.write("VERSION .7\n")
+class InputFormat(Enum):
+    XYZ = 1
+    XYZ_R_G_B = 2
+    XYZ_RGB = 3
 
-    #Write fields
-    writer.write("FIELDS ")
-    splitFormat = format.split()
-    validTokens = getValidTokens()
-    tokenToIndex = {}       #maps the token to the index at which it is found
-    typeContents = ""
-    appendToEnd = False
-    for index, token in enumerate(splitFormat):
-        token = token.lower()
-        if token in validTokens:
-            tokenToIndex[token] = index
-            if token == 'r' or token == 'g' or token == 'b':
-                appendToEnd = True
-            elif token == "rgb":
-                if index == 0:
-                    typeContents += "U"
-                else:
-                    typeContents += " U"
-            else:
-                if index == 0:
-                    typeContents = "F"
-                    writer.write(token)
-                else:
-                    typeContents += " F"
-                    writer.write(" " + token)
-    if appendToEnd:
-        typeContents += " U"
-        writer.write(" rgb")
-            
-    writer.write('\n')
-    #write byte size for each fields
-    writer.write("SIZE")
-    for i in range(0,len(typeContents.split())):
-        writer.write(" 4")
-    writer.write('\n')
-    #write value types
-    writer.write("TYPE ")
-    writer.write(typeContents + '\n')
-    #write field counts
-    writer.write("COUNT")
-    for i in range(0,len(typeContents.split())):
-        writer.write(" 1")
-    writer.write('\n')
-    #write width
-    writer.write("WIDTH " + str(lineCount) + '\n')
-    writer.write("HEIGHT 1\n")
+    stringRepresentation = {XYZ: 'xyz', XYZ_R_G_B: "xyzrgb"} #only these two are supported by Open3D
 
-    writer.write("VIEWPOINT 0 0 0 1 0 0 0\n")
-
-    writer.write("POINTS " + str(lineCount) + '\n')
-
-    writer.write("DATA ascii\n")
-
-    return tokenToIndex
+#return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
+def parseFormat(format):
+    locations = format.lower().split()
+    x_location = locations.index('x')
+    y_location = locations.index('y')
+    z_location = locations.index('z')
     
+    #location of data in each line
+    r_location = None
+    g_location = None
+    b_location = None
+    rgb_location = None
+
+    colorFormat = None
+
+    
+    try:
+        #if any locations are not found throw an exception that skips settings the color format
+        r_location = locations.index('r')
+        g_location = locations.index('g')
+        b_location = locations.index('b')
+        colorFormat = 'r_g_b'
+    except:
+        pass
+    try:
+        #if rgb location not found throw an exception that skips settings the color format
+        rgb_location = locations.find('rgb')
+        colorFormat = 'rgb'
+    except:
+        pass
+
+    #return the correct format based on given color data
+    if colorFormat == None:
+        return ([x_location, y_location, z_location], InputFormat.XYZ)
+    if colorFormat == 'rgb':
+        return ([x_location, y_location, z_location, rgb_location], InputFormat.XYZ_RGB)
+    if colorFormat == 'r_g_b':
+        return ([x_location, y_location, z_location, r_location, g_location, b_location], InputFormat.XYZ_R_G_B)
 
 
-def write_contents(reader, writer, format):
+def writeContents(reader, writer, indices, inputFormat):
     """
     :description: Responsible for writing the numeric contents of the given txt file to the pcd file
     :param reader: TextIoWrapper obtained from running open(filename, "r")
@@ -97,66 +70,64 @@ def write_contents(reader, writer, format):
     :param format: Dictionary of format tokens to indices.
     :returns: None\n
     """
+
+    print(indices, InputFormat)
+
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain writer")
-    if not isinstance(format, dict):
-        raise ValueError("Format is expected to be of type dict.")
+    if not isinstance(inputFormat, InputFormat):
+        raise ValueError("Input Format is expected to be of type InputFormat.")
     if not isinstance(reader, TextIOWrapper):
         raise ValueError("reader must be of type TextIOWrapper.\n Use the open(filename, 'r') function to obtain writer")
+
+    outputCount = len(indices)
 
     totalCount = 0
     missedLines = 0
 
     for line in reader:
-        parts = line.split()
-        rgbVals = [-1, -1, -1]
-        if len(parts) < len(format) and missedLines > 100:
-            raise InvalidFormatError("File does not match format provided")
-        elif len(parts) < len(format):
-            missedLines += 1
-            continue
-        for index, token in enumerate(format.keys()):
-            if token == 'r':
-                rgbVals[0] = int(parts[format[token]])
-            elif token == 'g':
-                rgbVals[1] = int(parts[format[token]])
-            elif token == 'b':
-                rgbVals[2] = int(parts[format[token]])
-
-            if not (token == "r" or token =="g" or token == "b"):
-                if index == 0:
-                    writer.write(parts[format[token]])
-                else:
-                    writer.write(" " + parts[format[token]])
-        #check to ensure all r, g, and b values are present
-        if rgbVals[0] == -1:
-            rgbVals[0] = 0
-        if rgbVals[1] == -1:
-            rgbVals[1] = 0
-        if rgbVals[2] == -1:
-            rgbVals[2] = 0
-        #calculate singular rgb value if relevant
-        if not (rgbVals[0] == 0 and rgbVals[1] == 0 and rgbVals[2] == 0):
-            writer.write(' ' + str( rgbVals[0] * 256 ** 2 + rgbVals[1] * 256 ** 1 + rgbVals[2]))
+        if len(line) == 0 or (len(line) >= 2 and line[0] == '/' and line [1] == '/') or (len(line) >= 1 and line[0] == '#'):
+            print("Comment found: " + line)
+            continue #comment found
+        fields = line.split()
         
-        writer.write('\n')
-        totalCount += 1
-        if(totalCount % 1e6 == 0):
-            print(str(totalCount) + " lines processed ")
-    return
 
-def get_pcd(pcdFile):
+        x = fields[indices[0]]
+        y = fields[indices[1]]
+        z = fields[indices[2]]
+
+        if(inputFormat == InputFormat.XYZ):
+            writer.write(str(x) + " " + str(y) + " " + str(z)) #x y and z locations are stored in indices
+            return InputFormat.XYZ
+        r = 0
+        g = 0
+        b = 0
+        if(inputFormat == InputFormat.XYZ_RGB):
+            rgb = fields[indices[3]]
+            r = int(int(fields) / (256 ** 2)) % 256
+            g = int(int(fields) / (256 ** 1)) % 256
+            b = int(int(fields) / (256 ** 0)) % 256
+        
+        if(inputFormat == InputFormat.XYZ_R_G_B):
+            r = int(fields[indices[3]])
+            g = int(fields[indices[4]])
+            b = int(fields[indices[5]])
+            
+        writer.write(str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255) ) #convert RGB from 0-255 to 0-1
+        return InputFormat.XYZ_R_G_B
+
+def getPcd(pcdFile):
     """
     :param pcdFile: Path to the pcdfile to create a pcd object of.
     :returns: pcd object that can be used for open3d visualization
     :Raises: ValueError: If file does not contain appropriate extension
     """
-    if not ".pcd" in pcdFile:
+    if not ".pcd" in pcdFile[-4:]:
         raise ValueError("Invalid file.  Check to ensure your file ends in .pcd")
 
     return o3d.io.read_point_cloud(pcdFile)
 
-def txt_to_pcd(textFile, pcdFile, inputFormat):
+def txtToPcd(textfile, pcdfile, inputFormat):
     """
     :Description: Converts the given text file to a pcd file suitible to be read in by Open3d
     :param textfile: Path to the textfile to be converted (String)
@@ -166,27 +137,32 @@ def txt_to_pcd(textFile, pcdFile, inputFormat):
     :Returns: None
     :Raises: ValueError
     """
-    if not '.' in textFile or not isinstance(textFile, str):
+    if not '.' in textfile or not isinstance(textfile, str):
         raise ValueError("Invalid path.  Please ensure your file has the .txt extension")
     
-    if not ".pcd" in pcdFile:   # append appropriate extension if not present
-        pcdfile = pcdFile + ".pcd"
+    if not ".pcd" in pcdfile:   # append appropriate extension if not present
+        pcdfile = pcdfile + ".pcd"
     
-    reader = open(textFile, "r")
+    reader = open(textfile, "r")
 
     lineCount = 0
     for line in reader:
+        line = line.strip() #remove trailing and preceding whitespace
+        if (len(line) == 0 or len(line) >= 2 and line[0] == '/' and line [1] == '/') or (len(line) >= 1 and line[0] == '#'):
+            continue #comment found
         lineCount += 1
     reader.close()
 
-    reader = open(textFile, "r")
+    reader = open(textfile, "r")
     writer = open(pcdfile, "w+")
-
-    indexList = write_header(writer, inputFormat, lineCount)
-
-    write_contents(reader, writer, indexList)
+    
+    format = parseFormat(inputFormat)
+    indices = format[0]
+    inputType = format[1]
+    
+    writeContents(reader, writer, indices, inputType)
 
     reader.close()
     writer.close()
 
-
+    return inputType
