@@ -20,8 +20,12 @@ class InputFormat(Enum):
     XYZ_R_G_B = 2
     XYZ_RGB = 3
 
-
+def validFormat(format):
+    fields = format.lower().split()
+    return ('x' in fields and 'y' in fields and 'z' in fields)
+    
 #return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
+
 def parseFormat(format):
     locations = format.lower().split()
     x_location = locations.index('x')
@@ -112,7 +116,7 @@ def writeContents(reader, writer, indices, inputFormat):
             b = int(fields[indices[5]])
             
         outputCount += 1
-        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255)  #convert RGB from 0-255 to 0-1
+        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r) + " " + str(g) + " " + str(b)  
         writer.write(output + "\n")
     return outputCount
 
@@ -166,5 +170,11 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     writer.close()
 
     stringRepresentation = {InputFormat.XYZ: 'xyz', InputFormat.XYZ_R_G_B: "xyzrgb"}[inputType] #return order of data (xyz or xyzrgb)
+    pcd = read_point_cloud(pcdfile, stringRepresentation)
+    return pcd 
 
-    return stringRepresentation 
+def read_point_cloud(filename, txtFormat = None):
+    if(txtFormat != None):
+        return o3d.io.read_point_cloud(filename, format = txtFormat)
+    else:
+        return o3d.io.read_point_cloud(filename)
