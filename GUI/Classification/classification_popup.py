@@ -1,9 +1,14 @@
 import tkinter as tk
 from tkinter import colorchooser
 
-from Classification import Classification
+from classification import classification
 
 class ClassificationPopup:
+    """
+    :description: Static class to manage classification popups. Data is written statically so it can be easily accessed after popup is finished. 
+    :interracts with: Classification, ClassificationMenu
+    """ 
+
     TEXT_WIDTH = 25
     DESCRIPTION_HEIGHT = 8
     WINDOW_NAME = "New Type"

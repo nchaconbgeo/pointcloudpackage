@@ -1,7 +1,7 @@
 import tkinter as tk
 
-from ClassificationPopup import ClassificationPopup
-import Classification
+from classification_popup import ClassificationPopup
+import classification
 
 #library for making partial functions
 from functools import partial
@@ -21,24 +21,17 @@ class ClassificationMenu:
     def doneAddingClassification(self):
         Classification.classifications.append(ClassificationPopup.toClassification())
 
-        for classification in Classification.classifications:
-            print(classification)
         
         ClassificationPopup.close()
         self.rebuildButtons()
 
     def doneModifyingClassification(self):
         result = ClassificationPopup.toClassification()
-
-        for classification in Classification.classifications:
-            print(classification)
         
         ClassificationPopup.close()
         self.rebuildButtons()
 
     def rebuildButtons(self):
-
-        if(self.buttonFrame != None)
 
         for button in self.classificationButtons:
             button.destroy()

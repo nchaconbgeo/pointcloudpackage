@@ -20,7 +20,6 @@ class InputFormat(Enum):
     XYZ_R_G_B = 2
     XYZ_RGB = 3
 
-    stringRepresentation = {XYZ: 'xyz', XYZ_R_G_B: "xyzrgb"} #only these two are supported by Open3D
 
 #return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
 def parseFormat(format):
@@ -71,8 +70,6 @@ def writeContents(reader, writer, indices, inputFormat):
     :returns: None\n
     """
 
-    print(indices, InputFormat)
-
     if not isinstance(writer, TextIOWrapper):
         raise ValueError("writer must be of type TextIOWrapper.\n Use the open(filename, 'w') function to obtain writer")
     if not isinstance(inputFormat, InputFormat):
@@ -91,30 +88,33 @@ def writeContents(reader, writer, indices, inputFormat):
             continue #comment found
         fields = line.split()
         
-
         x = fields[indices[0]]
         y = fields[indices[1]]
         z = fields[indices[2]]
 
         if(inputFormat == InputFormat.XYZ):
             writer.write(str(x) + " " + str(y) + " " + str(z)) #x y and z locations are stored in indices
-            return InputFormat.XYZ
+            outputCount += 1
+            continue
+
         r = 0
         g = 0
         b = 0
         if(inputFormat == InputFormat.XYZ_RGB):
             rgb = fields[indices[3]]
-            r = int(int(fields) / (256 ** 2)) % 256
-            g = int(int(fields) / (256 ** 1)) % 256
-            b = int(int(fields) / (256 ** 0)) % 256
+            r = int(int(rgb) / (256 ** 2)) % 256
+            g = int(int(rgb) / (256 ** 1)) % 256
+            b = int(int(rgb) / (256 ** 0)) % 256
         
         if(inputFormat == InputFormat.XYZ_R_G_B):
             r = int(fields[indices[3]])
             g = int(fields[indices[4]])
             b = int(fields[indices[5]])
             
-        writer.write(str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255) ) #convert RGB from 0-255 to 0-1
-        return InputFormat.XYZ_R_G_B
+        outputCount += 1
+        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255)  #convert RGB from 0-255 to 0-1
+        writer.write(output + "\n")
+    return outputCount
 
 def getPcd(pcdFile):
     """
@@ -140,8 +140,8 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     if not '.' in textfile or not isinstance(textfile, str):
         raise ValueError("Invalid path.  Please ensure your file has the .txt extension")
     
-    if not ".pcd" in pcdfile:   # append appropriate extension if not present
-        pcdfile = pcdfile + ".pcd"
+    if not ".txt" in pcdfile:   # append appropriate extension if not present
+        pcdfile = pcdfile + ".txt"
     
     reader = open(textfile, "r")
 
@@ -165,4 +165,6 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     reader.close()
     writer.close()
 
-    return inputType
+    stringRepresentation = {InputFormat.XYZ: 'xyz', InputFormat.XYZ_R_G_B: "xyzrgb"}[inputType] #return order of data (xyz or xyzrgb)
+
+    return stringRepresentation 
