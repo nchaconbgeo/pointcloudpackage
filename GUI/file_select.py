@@ -3,21 +3,28 @@ from tkinter import filedialog
 
 class FileSelect:
     
+
+
     frame = None
     selectedFile = ""
     selectionButton = None
 
     selectedLabel = None
     fileLabel = None
+    formatLabel = None
 
     closeFunction = None
 
+    formatEntry = None
+
+    FORMAT_TEXT = "Format:"
     BUTTON_TEXT = "Select File"
     WINDOW_NAME = "Import File"
     SELECTED_TEXT = "Selected File:"
     INITIAL_FILE_TEXT = "None"
     DONE_TEXT = "Done"
-
+    ENTRY_WIDTH = 25
+    BUTTON_WIDTH = 8
 
     def select_file(self):
         """
@@ -36,7 +43,7 @@ class FileSelect:
             initialdir=".",
             filetypes=filetypes)
 
-        if(selectedFile == None or selectedFile == ()):
+        if(selectedFile == None or selectedFile == () or selectedFile == ''):
             return #user cancelled selection operation
 
         self.selectedFile = selectedFile
@@ -65,6 +72,7 @@ class FileSelect:
         FileSelect.frame = tk.Toplevel(root) # window
         FileSelect.frame.title(FileSelect.WINDOW_NAME)
 
+
         #create selected label
         self.selectedLabel = tk.Label(self.frame, text = FileSelect.SELECTED_TEXT, font = ("", 0, "bold"))
         self.selectedLabel.grid(column=0, row = 0)
@@ -75,11 +83,21 @@ class FileSelect:
 
         #create button to open file dialogue
         self.selectionButton = tk.Button(self.frame, text = FileSelect.BUTTON_TEXT, width = 8, height = 0, command = self.select_file)
-        self.selectionButton.grid(column = 0, row = 1)
+        self.selectionButton.grid(column = 0, row = 2)
 
         #create button to finish file selection
-        self.doneButton = tk.Button(self.frame, text = FileSelect.DONE_TEXT, width = 8, height = 0, state = "disabled", command = doneFunction )
-        self.doneButton.grid(column = 1, row = 1, pady = 5)
+        self.doneButton = tk.Button(self.frame, text = FileSelect.DONE_TEXT, width = FileSelect.BUTTON_WIDTH, height = 0, state = "disabled", command = doneFunction )
+        self.doneButton.grid(column = 1, row = 2, pady = 5)
+
+        #create label for format entry box
+        self.formatLabel = tk.Label(self.frame, text=FileSelect.FORMAT_TEXT, font = ("", 0, "bold"))
+        self.formatLabel.grid(column=0, row=1)
+
+        #create entry field for file format
+        self.formatEntry = tk.Entry(self.frame, width=FileSelect.ENTRY_WIDTH)
+        self.formatEntry.grid(column=1, row=1)
+
+        
 
         #disable resizing
         self.frame.resizable(False, False) 

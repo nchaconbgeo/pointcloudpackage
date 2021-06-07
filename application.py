@@ -1,5 +1,6 @@
 import tkinter as tk
 from GUI import file_select
+import import_export
 
 class Application:
     root = None
@@ -16,6 +17,8 @@ class Application:
         tk.mainloop()   
 
     def doneSelectingFile(self):
+        #TODO
+        import_export.txtToPcd()
         print(self.fileSelect.selectedFile)
 
 app = Application()
