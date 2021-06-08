@@ -31,8 +31,8 @@ class Application:
         self.open3dVis = o3d.visualization.Visualizer()
         self.geometriesList.append(self.pointData.pointCloud)
         #Visualize object for user. 
-        self.homeScreen = home_screen.HomeScreen(self.root, closeFunction = self.closeApp)
         visualization.visualize(self.open3dVis, self.geometriesList)
+        self.homeScreen = home_screen.HomeScreen(self.root, closeFunction = self.closeApp)
 
         
 
