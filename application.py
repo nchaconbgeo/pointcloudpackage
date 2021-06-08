@@ -16,7 +16,7 @@ class Application:
         # creates a Tk() object
         self.root = tk.Tk()
         self.root.withdraw()
-        self.fileSelect = file_select.FileSelect(self.root, self.doneSelectingFile, closeFunction = self.root.destroy)
+        self.fileSelect = file_select.FileSelect(self.root, self.doneSelectingFile, closeFunction = self.closeApp)
         # mainloop, runs infinitely
         tk.mainloop()   
 
@@ -24,7 +24,11 @@ class Application:
         fileFormat = self.fileSelect.formatEntry.get().lower()
         fileName = self.fileSelect.selectedFile
         self.pointData = import_export.readData(fileName, fileFormat)
+
+        self.fileSelect.frame.destroy()
         o3d.visualization.draw_geometries([self.pointData.pointCloud])
 
+    def closeApp(self):
+        self.root.destroy()
         
 app = Application()

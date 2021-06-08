@@ -46,9 +46,9 @@ def readData(fileName, fileFormat):
     """
     pcd = None
     if('xyzrgb' in fileName):
-        pcd = readPointCloud(fileName, format="xyzrgb")
+        pcd = readPointCloud(fileName, fileFormat="xyzrgb")
     elif('xyz' in fileName):
-        pcd = readPointCloud(fileName, format="xyz")
+        pcd = readPointCloud(fileName, fileFormat="xyz")
     elif('.txt' in fileName):
         #Checks file format to make sure it is valid with xyz or xyzrgb
         if(not validFormat(fileFormat)):
@@ -158,7 +158,7 @@ def writeContents(reader, writer, indices, inputFormat):
             b = int(fields[indices[5]])
             
         outputCount += 1
-        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r) + " " + str(g) + " " + str(b)  
+        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255)  
         writer.write(output + "\n")
     return outputCount
 
@@ -215,14 +215,14 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     pcd = readPointCloud(pcdfile, stringRepresentation)
     return pcd 
 
-def readPointCloud(fileName, txtFormat = None):
+def readPointCloud(fileName, fileFormat = None):
     """
     :Description: Wrapper function to manage open3d's import functionality.
     :param filename: name of the file for import
-    :param txtFormat: format of the file (ie. 'xyz')
+    :param fileFormat: format of the file (ie. 'xyz')
     :Returns: open3d.geometry.PointCloud() object.
     """
-    if(txtFormat != None):
-        return o3d.io.read_point_cloud(fileName, format = txtFormat)
+    if(fileFormat != None):
+        return o3d.io.read_point_cloud(fileName, format = fileFormat)
     else:
         return o3d.io.read_point_cloud(fileName)
