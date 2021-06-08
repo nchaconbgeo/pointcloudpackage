@@ -107,4 +107,4 @@ class FileSelect:
             self.closeFunction = closeFunction
             self.frame.protocol("WM_DELETE_WINDOW", self.runCloseFunction)
 
-        FileSelect.frame.grab_set() # grab focus
+        self.frame.grab_set() # grab focus

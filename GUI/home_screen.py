@@ -63,8 +63,7 @@ class HomeScreen:
         #disable resizing
         self.frame.resizable(False, False) 
 
-# creates a Tk() object
-root = tk.Tk()
-
-h = HomeScreen(root)
-tk.mainloop() 
+if __name__ == "__main__" :
+    root = tk.Tk()
+    h = HomeScreen(root)
+    tk.mainloop() 

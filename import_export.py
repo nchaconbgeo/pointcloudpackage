@@ -10,6 +10,8 @@ import open3d as o3d
 from enum import Enum
 import numpy as np
 from point_data import PointData
+from tkinter import messagebox
+
 
 
 class InvalidFormatError:
