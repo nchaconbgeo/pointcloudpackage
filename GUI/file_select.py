@@ -66,11 +66,11 @@ class FileSelect:
         :rtype: FileSelect
         """ 
 
-        if FileSelect.frame != None: #clear any old popups
-            FileSelect.frame.destroy()
+        if self.frame != None: #clear any old popups
+            self.frame.destroy()
 
-        FileSelect.frame = tk.Toplevel(root) # window
-        FileSelect.frame.title(FileSelect.WINDOW_NAME)
+        self.frame = tk.Toplevel(root) # window
+        self.frame.title(FileSelect.WINDOW_NAME)
 
 
         #create selected label

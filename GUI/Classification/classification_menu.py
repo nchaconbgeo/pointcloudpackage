@@ -18,8 +18,9 @@ class ClassificationMenu:
 
     frame = None
     root = None
+    
     def doneAddingClassification(self):
-        Classification.classifications.append(ClassificationPopup.toClassification())
+        classification.Classification.append(ClassificationPopup.toClassification())
 
         
         ClassificationPopup.close()
@@ -36,7 +37,7 @@ class ClassificationMenu:
         for button in self.classificationButtons:
             button.destroy()
         i = 0
-        for classification in Classification.classifications:
+        for classification in classification.classifications:
             button = tk.Button(self.frame, text = classification.name, bg = classification.color, width = 8, height = 0, command = partial(self.printButtonInfo, i))
             button.grid(row = i + 1, column = 0, padx = 5) #0th slot taken up by label
             self.classificationButtons.append(button)
@@ -50,7 +51,7 @@ class ClassificationMenu:
 
 
     def printButtonInfo(self, index):
-        print(Classification.classifications[index].name)
+        print(classification.classifications[index].name)
 
     def newClassification(self):
         ClassificationPopup(self.root, self.doneAddingClassification)
