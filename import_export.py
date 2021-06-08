@@ -8,6 +8,9 @@ This package includes all the necessary functionality for importing / exporting 
 from io import TextIOWrapper
 import open3d as o3d
 from enum import Enum
+import numpy as np
+from point_data import PointData
+
 
 class InvalidFormatError:
     """
@@ -20,12 +23,51 @@ class InputFormat(Enum):
     XYZ_R_G_B = 2
     XYZ_RGB = 3
 
-def validFormat(format):
-    fields = format.lower().split()
-    return ('x' in fields and 'y' in fields and 'z' in fields)
-    
-#return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
 
+def validFormat(format):
+    """
+    :Description: Checks if x, y, and z are elements in the fields for parsing. Checks if any 'r' 'g' or 'b' elements are in the format then all 'rgb' values are in format.
+    :param format: format of the file passed in
+    :Returns: boolean value
+    """
+    fields = format.lower().split()
+    if not('r' in fields and 'g' in fields and 'b' in fields) and ('r' in fields or 'g' in fields or 'b' in fields):
+        return False
+    else:
+        return ('x' in fields and 'y' in fields and 'z' in fields)
+    
+
+def readData(fileName, fileFormat):
+    """
+    :Description: wrapper function to process all data and returns pointData object.
+    :param fileName: name of the file for import of type .pcd, .ply, .txt
+    :param fileFormat: specifies data organization in the file (typically 'xyz' or 'xyzrgb').
+    :Returns: pointData() object.
+    """
+    pcd = None
+    if('xyzrgb' in fileName):
+        pcd = readPointCloud(fileName, format="xyzrgb")
+    elif('xyz' in fileName):
+        pcd = readPointCloud(fileName, format="xyz")
+    elif('.txt' in fileName):
+        #Checks file format to make sure it is valid with xyz or xyzrgb
+        if(not validFormat(fileFormat)):
+            messagebox.showerror("Invalid File Format", "Valid Format should contain space-separated values containing at minimum (x,y,z) values. \nInclude a complete set of (r,g,b) values for color; all other fields will be ignored.")
+            return
+        #Renames file when creating sliced file. 
+        newFile = fileName.replace(".txt", "." + fileFormat.lower())
+        newFile = newFile.replace(" ", "")
+        pcd = txtToPcd(fileName, newFile, fileFormat)  
+    else:
+        pcd = readPointCloud(fileName)
+    originalColors = pcd.colors
+    labels = np.zeros(len(pcd.points)) 
+    pointData = PointData(fileName, pcd, labels, originalColors)
+    return pointData
+
+
+
+#return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
 def parseFormat(format):
     locations = format.lower().split()
     x_location = locations.index('x')
@@ -170,11 +212,17 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     writer.close()
 
     stringRepresentation = {InputFormat.XYZ: 'xyz', InputFormat.XYZ_R_G_B: "xyzrgb"}[inputType] #return order of data (xyz or xyzrgb)
-    pcd = read_point_cloud(pcdfile, stringRepresentation)
+    pcd = readPointCloud(pcdfile, stringRepresentation)
     return pcd 
 
-def read_point_cloud(filename, txtFormat = None):
+def readPointCloud(fileName, txtFormat = None):
+    """
+    :Description: Wrapper function to manage open3d's import functionality.
+    :param filename: name of the file for import
+    :param txtFormat: format of the file (ie. 'xyz')
+    :Returns: open3d.geometry.PointCloud() object.
+    """
     if(txtFormat != None):
-        return o3d.io.read_point_cloud(filename, format = txtFormat)
+        return o3d.io.read_point_cloud(fileName, format = txtFormat)
     else:
-        return o3d.io.read_point_cloud(filename)
+        return o3d.io.read_point_cloud(fileName)

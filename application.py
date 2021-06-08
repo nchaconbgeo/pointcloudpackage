@@ -21,18 +21,10 @@ class Application:
         tk.mainloop()   
 
     def doneSelectingFile(self):
-        fileFormat = self.fileSelect.formatEntry.get()
+        fileFormat = self.fileSelect.formatEntry.get().lower()
         fileName = self.fileSelect.selectedFile
-        if('.txt' in fileName):
-            if(not import_export.validFormat(fileFormat)):
-                messagebox.showerror("Invalid File Format", "Valid Format should contain space-separated values containing at minimum (x,y,z) values. \nInclude (r,g,b) for color, all other fields will be ignored.")
-                return
-            pcd = import_export.txtToPcd(fileName, fileName + "_sliced.txt", fileFormat)  
-        else:
-            pcd = import_export.read_point_cloud(fileName)
-        originalColors = pcd.colors
-        labels = np.zeros(len(pcd.points)) 
-        self.pointData = PointData(fileName, pcd, labels, originalColors)
+        self.pointData = import_export.readData(fileName, fileFormat)
         o3d.visualization.draw_geometries([self.pointData.pointCloud])
 
+        
 app = Application()
