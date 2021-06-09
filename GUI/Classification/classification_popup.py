@@ -86,7 +86,7 @@ class ClassificationPopup:
         ClassificationPopup.descriptionLabel = tk.Label(ClassificationPopup.frame, text = ClassificationPopup.DESCRIPTION_TEXT)
         ClassificationPopup.descriptionField = tk.Text(ClassificationPopup.frame, width = ClassificationPopup.TEXT_WIDTH, height = ClassificationPopup.DESCRIPTION_HEIGHT, border = 2, relief = "groove")
 
-        ClassificationPopup.colorButton = tk.Button(ClassificationPopup.frame, text = ClassificationPopup.COLOR_TEXT, bg = ClassificationPopup.chosenColor, command = ClassificationPopup.pickColor, pady = 15) #color picker button
+        ClassificationPopup.colorButton = tk.Button(ClassificationPopup.frame, text = ClassificationPopup.COLOR_TEXT, bg= ClassificationPopup.chosenColor, highlightbackground= ClassificationPopup.chosenColor, command = ClassificationPopup.pickColor, pady = 15) #color picker button
         ClassificationPopup.doneButton = tk.Button(ClassificationPopup.frame, text = ClassificationPopup.DONE_TEXT, command = doneFunction, pady = 15) #done button
 
         #add to grid in descending order

@@ -15,8 +15,8 @@ class PointData:
         self.pointCloud = pointCloud 
         self.labels = labels
         self.originalColors = originalColors
-
         self.classifications = [classification.Classification()]
+
 
 
 

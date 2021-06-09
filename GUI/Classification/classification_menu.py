@@ -11,6 +11,7 @@ from functools import partial
 class ClassificationMenu:
     WINDOW_NAME = "Point Classifications"
     ADD_TEXT = "New Classification"
+    BUTTON_WIDTH = 16
 
     classificationButtons = []
     newClassificationButton = None
@@ -35,7 +36,7 @@ class ClassificationMenu:
 
 
         for classification in self.app.pointData.classifications:
-            button = tk.Button(self.frame, text = classification.name, bg = classification.color, width = 8, height = 0, command = partial(self.editButton, i))
+            button = tk.Button(self.frame, text = classification.name, highlightbackground = classification.color, width = self.BUTTON_WIDTH, height = 0, command = partial(self.editButton, i), pady=5)
             button.grid(row = i + 1, column = 0, padx = 5) #0th slot taken up by label
             self.classificationButtons.append(button)
             i += 1
@@ -49,7 +50,6 @@ class ClassificationMenu:
     def doneModifyingClassification(self, index):
         self.app.pointData.classifications[index] = classificationPopup.ClassificationPopup.toClassification()
         classificationPopup.ClassificationPopup.close()
-
         self.rebuildButtons()
 
     def editButton(self, index):
