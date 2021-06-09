@@ -28,11 +28,16 @@ All functionality is contained within an application that can be run as an execu
 ![Image of File Import Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/880882d4609b8b2aa132f7eb7d34bdbd2db4bf9d/R3dF8LChjjVPzA0pDqUXoSYy9t1eK2RRW5jquabGel_H5_XPiKdv2jDJfidlsbG88s8_LCcRUvSiqM7aY-i3iiDwUG50hAhSVn_FPrI4dMeyWPMZ6fCetf_L04XTLexrpRpJEQNS_vo(1).png)
 
 *Main Menu:* after importing a file for use in GeoPointClouds, you will be directed to the main menu. The main menu has the following functionalities:
-  * a `Select Volume` button: 
-  * a `Edit/View Labels` button: 
-  * a `Draw Line` button:
-  * a `Render/Export` button: 
+  * `Select Volume`: see Select Volume. (hotlink)
+  * `Edit/View Labels`: see Edit/View.
+  * `Draw Line`: see Draw Line.
+  * `Render/Export`: see Render/Export.
   * a `?` button: this button will direct you to this repository and readme documentation.
+
+*Select Volume:*
+
+
+
 
 ![Image of Main Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/52e50232f70f1181900d37183f385c8311e2cfbd/5LM8NSSPHYK7F1Tk6wDMWapX95uX_1i72NGmp0vEPue0i4H4XdKcnLZjElpvhE3AkI8uStRGPqCTLEp3Gy7mfDQL-4KT0yHWYlaUdmEhQENTtlAZXpWwi-kOLCGN4aY0ZYp8qnxBzYY.png)
 
