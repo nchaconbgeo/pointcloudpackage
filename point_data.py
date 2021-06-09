@@ -17,10 +17,14 @@ class PointData:
         self.labels = labels
         self.originalColors = originalColors
         self.classifications = [classification.Classification()]
+        for i, point in enumerate(pointCloud.points):
+            tup = (point[0], point[1], point[2])
+            self.hashMap[tup] = i
+        
 
         
 
-    def processLabels(self, visualizer):
+    def processLabels(self, visualizer, classificationIndex):
         """
         :description:
         :param visualizer: visualizer of type open3d.visualization.visualizerWithEditing()
@@ -52,7 +56,15 @@ class PointData:
         croppedPcd = vol.crop_point_cloud(self.pointCloud)
         #idea: hashMap for volume selection and comparison between croppedPcd and self.pointCloud
         #TODO: hashmap for volume selection and comparison to generate labels and process colors for each point.
+        cloudColor = self.classifications[classificationIndex].color
         
+        for point in croppedPcd.points:
+            tup = (point[0], point[1], point[2])
+            index = self.hashMap[tup]
+            self.labels[index] = classificationIndex
+            self.pointCloud.colors[index] = cloudColor
+
+
 
     
 
