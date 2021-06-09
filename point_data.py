@@ -6,6 +6,7 @@ import numpy as np
 class PointData:
     fileName = ""
     pointCloud = None
+    hashMap = {}
     labels = None
     originalColors = None
     classifications = None
@@ -17,6 +18,50 @@ class PointData:
         self.originalColors = originalColors
         self.classifications = [classification.Classification()]
 
+        
+
+    def processLabels(self, visualizer):
+        """
+        :description:
+        :param visualizer: visualizer of type open3d.visualization.visualizerWithEditing()
+        :param selectedClassification: 
+
+        """
+        #Open3D VisualizerwithEditing()
+        #volume selection - math or open3d bounding polygon case
+        #assign colors and labels to points within volume selection
+
+        picked = visualizer.get_picked_points()
+        pickedPointsIndices = []
+
+        #defining the list of the points gathered (linepoints) for the lineset and bounding polygon. 
+        for i in picked:
+            #to access data in a PointCloud() object, you must use the attributes (see pcd.points[i] below).
+            pickedPointsIndices.append(self.pointCloud.points[i])
+
+        pickedPointsIndices.append(pickedPointsIndices[0]) 
+        boundingPolygon = np.asarray(o3d.utility.Vector3dVector(pickedPointsIndices))
+        vol = o3d.visualization.SelectionPolygonVolume()
+        vol.axis_max = 0
+        vol.axis_min = 0
+        vol.orthogonal_axis = "Z"
+        vol.axis_max = np.max(boundingPolygon[:, 2])
+        vol.axis_min = np.min(boundingPolygon[:, 2])
+        vol.bounding_polygon = o3d.utility.Vector3dVector(boundingPolygon)
+        #cropped_pcd 
+        croppedPcd = vol.crop_point_cloud(self.pointCloud)
+        #idea: hashMap for volume selection and comparison between croppedPcd and self.pointCloud
+        #TODO: hashmap for volume selection and comparison to generate labels and process colors for each point.
+        
+
+    
+
+    
+    #def processColors(self):
+
+
+
+        
 
 
 

@@ -81,6 +81,7 @@ def volumeSelection(pcd, show_line_set = True, recolor_cropped_cloud = True, col
     vol.bounding_polygon = o3d.utility.Vector3dVector(bounding_polygon)
     cropped_pcd = vol.crop_point_cloud(pcd)
     uncolored_cropped_pcd = vol.crop_point_cloud(pcd)
+    print(cropped_pcd.points)
 
     if(show_line_set):
         print("drawing lines....\n")
@@ -122,5 +123,4 @@ def cropVolume(pcd):
     :rtype: open3d.geometry.PointCloud
     """ 
     return volumeSelection(pcd, False, False, False, False, False, None)
-
 
