@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import colorchooser
 
-from classification import classification
+from GUI.Classification import classification
 
 class ClassificationPopup:
     """
@@ -11,7 +11,11 @@ class ClassificationPopup:
 
     TEXT_WIDTH = 25
     DESCRIPTION_HEIGHT = 8
-    WINDOW_NAME = "New Type"
+
+    WINDOW_NAME_NEW = "New Type"
+    WINDOW_NAME_CHANGE = "Edit Type"
+
+
     NAME_TEXT = "Name:"
     DESCRIPTION_TEXT = "Description:"
     COLOR_TEXT = "Choose Color"
@@ -32,7 +36,7 @@ class ClassificationPopup:
         :return: Classification of inputted data.
         :rtype: Classification.Classification
         """ 
-        return Classification(name = ClassificationPopup.nameField.get(), description = ClassificationPopup.descriptionField.get("1.0", "end-1c"), color = ClassificationPopup.chosenColor)
+        return classification.Classification(name = ClassificationPopup.nameField.get(), description = ClassificationPopup.descriptionField.get("1.0", "end-1c"), color = ClassificationPopup.chosenColor)
 
     def pickColor():
         """
@@ -57,7 +61,7 @@ class ClassificationPopup:
             ClassificationPopup.frame = None
             ClassificationPopup.chosenColor = ClassificationPopup.defaultColor
 
-    def __init__(self, root, doneFunction):
+    def __init__(self, root, doneFunction, currentClassification = None ):
         """
         :description: Create all the widgets for a  classification popup and display it to the user
         :return: The constructed class
@@ -69,9 +73,12 @@ class ClassificationPopup:
 
 
         ClassificationPopup.frame = tk.Toplevel(root) # window
-        ClassificationPopup.frame.title(ClassificationPopup.WINDOW_NAME)
-      
 
+        if(currentClassification == None):
+            ClassificationPopup.frame.title(ClassificationPopup.WINDOW_NAME_NEW)
+        else:
+            ClassificationPopup.frame.title(ClassificationPopup.WINDOW_NAME_CHANGE)
+      
         #labels and text fields
         ClassificationPopup.nameLabel = tk.Label(ClassificationPopup.frame, text = ClassificationPopup.NAME_TEXT)
         ClassificationPopup.nameField = tk.Entry(ClassificationPopup.frame, width = ClassificationPopup.TEXT_WIDTH)
@@ -91,5 +98,11 @@ class ClassificationPopup:
         
         ClassificationPopup.colorButton.grid(row = 4, column = 0, sticky = 'EW')
         ClassificationPopup.doneButton.grid(row = 5, column = 0, sticky = 'EW')
+
+        if(currentClassification != None):
+            ClassificationPopup.nameField.insert(0, currentClassification.name)
+            ClassificationPopup.descriptionField.insert('insert', currentClassification.description)
+            ClassificationPopup.chosenColor = currentClassification.color
+            ClassificationPopup.colorButton.configure(bg=ClassificationPopup.chosenColor)
 
         ClassificationPopup.frame.grab_set() # grab focus

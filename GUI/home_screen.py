@@ -1,7 +1,10 @@
 import tkinter as tk
 import webbrowser
+import application
 
 class HomeScreen:
+
+    app = None
 
     frame = None
 
@@ -15,6 +18,7 @@ class HomeScreen:
 
     windowTitle = None
 
+    classificationMenu = None
 
     WINDOW_NAME = "GeoPointClouds"
 
@@ -30,10 +34,15 @@ class HomeScreen:
     
     BUTTON_WIDTH = 14
 
+    def openClassificationMenu(self):
+        import GUI.Classification.classification_menu
+        classificationMenu = GUI.Classification.classification_menu.ClassificationMenu(self.frame, self.app)
+
     def openHelpSite(self):
         webbrowser.open(HomeScreen.HELP_SITE, new=1)        
 
-    def __init__(self, root, closeFunction = None):
+    def __init__(self, root, app, closeFunction = None):
+        self.app = app
         self.frame = tk.Toplevel(root) # window
         self.frame.title(HomeScreen.WINDOW_NAME)
 
@@ -42,7 +51,7 @@ class HomeScreen:
         self.windowTitle.grid(row = 0, column = 0, columnspan = 2, padx = 8, pady = 5)
 
         #adds label button to grid
-        self.labelButton = tk.Button(self.frame, text=self.VIEW_LABEL_TEXT, width = HomeScreen.BUTTON_WIDTH)
+        self.labelButton = tk.Button(self.frame, text=self.VIEW_LABEL_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.openClassificationMenu)
         self.labelButton.grid(row=1, column=0, pady=5, padx=5)
 
         #adds drawLine button to grid

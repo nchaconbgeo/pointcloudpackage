@@ -8,7 +8,7 @@ class Classification:
     name = 'New Classification'
     description = ''
 
-    def __init__(self, name = 'unnamed', description = 'empty', color = "#ff00ff"):
+    def __init__(self, name = 'Default Classification', description = 'Default Classification description', color = "#ff00ff"):
         self.cloud_id = Classification.cloud_count
         Classification.cloud_count += 1
         self.name = name
