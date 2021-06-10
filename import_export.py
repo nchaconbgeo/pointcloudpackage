@@ -66,7 +66,7 @@ def readData(fileName, fileFormat):
     else:
         pcd = readPointCloud(fileName)
     originalColors = pcd.colors
-    labels = np.zeros(len(pcd.points)) 
+    labels = np.zeros(len(pcd.points), dtype = int) 
     pointData = PointData(fileName, pcd, labels, originalColors)
     return pointData
 

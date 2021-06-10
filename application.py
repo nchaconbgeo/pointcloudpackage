@@ -77,14 +77,6 @@ class Application:
         self.open3dVis = o3d.visualization.VisualizerWithEditing()
 
         visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user.
-
-        color = "#"
-        for i in range(6):
-            import random
-            index = random.randint(0, 15)
-            color = color + ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
-
-        self.pointData.classifications.append(Classification(color=color))
         self.pointData.processLabels(self.open3dVis, len(self.pointData.classifications) - 1)
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes

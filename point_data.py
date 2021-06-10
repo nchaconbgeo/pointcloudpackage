@@ -19,7 +19,7 @@ class PointData:
         self.pointCloud = pointCloud 
         self.labels = labels
         self.originalColors = originalColors
-        self.classifications = [classification.Classification()]
+        self.classifications = [classification.Classification(color = '#ffffff')]
         for i, point in enumerate(pointCloud.points):
             tup = (point[0], point[1], point[2])
             self.hashMap[tup] = i
@@ -59,8 +59,7 @@ class PointData:
         vol.bounding_polygon = o3d.utility.Vector3dVector(boundingPolygon)
         #cropped_pcd 
         croppedPcd = vol.crop_point_cloud(self.pointCloud)
-        #idea: hashMap for volume selection and comparison between croppedPcd and self.pointCloud
-        #TODO: hashmap for volume selection and comparison to generate labels and process colors for each point.
+ 
         cloudColor = self.classifications[classificationIndex].color
         
         floatArray = tuple(float(int(cloudColor[i:i+2], 16)) / 255 for i in (1, 3, 5))
@@ -69,11 +68,22 @@ class PointData:
         for point in croppedPcd.points:
             tup = (point[0], point[1], point[2])
             index = self.hashMap[tup]
-            self.labels[index] = classificationIndex
-
-            self.pointCloud.colors[index] = rgbArray
+            if(self.labels[index] == 0):
+                self.pointCloud.colors[index] = self.originalColors[index]
+            else:
+                self.labels[index] = classificationIndex
+                self.pointCloud.colors[index] = rgbArray
     
-    #def processColors(self):
+
+    def processColorChange(self):
+        for i in range(len(self.pointCloud.points)):
+            labelIndex = self.labels[i]
+            if(labelIndex != 0):
+                originalColor = self.originalColors[i]
+                classificationColor = self.classifications[labelIndex].rgbColor
+                self.pointCloud.colors[i] = originalColor * 0.5 + classificationColor * (1-0.5)
+
+  
 
 
 
