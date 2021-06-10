@@ -1,14 +1,9 @@
 # GeoPointClouds 3D Visualization Software
 
 GeoPointClouds is a 3D Visualization Software created to perform geological interpretations on point cloud data. Version 0.0 functionality consists of:
-  * File Input and Output for Point Cloud Data Types:
-    *   .txt<sup> 1</sup>
-    *   .ply 
-    *   .pcd
-    *   .pts
+  * File Input and Output for Point Cloud Data Types: .txt<sup> 1</sup>, .ply, .pcd, .pts
   * Graphical Visualization of 3d Point Clouds:
-    * Color Changes for Data
-    * Ability to rotate and perform zoom operations on data  
+    * Ability to rotate and perform zoom and cropping operations on data  
   * Volume Selection for Point Cloud Labeling
     * Polygon Selection
     * Projection Selection
