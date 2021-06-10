@@ -1,4 +1,4 @@
-## GeoPointClouds 3D Visualization Software
+# GeoPointClouds 3D Visualization Software
 
 GeoPointClouds is a 3D Visualization Software created to perform geological interpretations on point cloud data. Version 0.0 functionality consists of:
   * File Input and Output for Point Cloud Data Types:
@@ -28,10 +28,11 @@ All functionality is contained within an application that can be run as an execu
 ![Image of File Import Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/880882d4609b8b2aa132f7eb7d34bdbd2db4bf9d/R3dF8LChjjVPzA0pDqUXoSYy9t1eK2RRW5jquabGel_H5_XPiKdv2jDJfidlsbG88s8_LCcRUvSiqM7aY-i3iiDwUG50hAhSVn_FPrI4dMeyWPMZ6fCetf_L04XTLexrpRpJEQNS_vo(1).png)
 
 *Main Menu:* after importing a file for use in GeoPointClouds, you will be directed to the main menu. The main menu has the following functionalities:
-  * `Select Volume`: see [Go to Real Cool Heading section](#Select-Volume)
-  * `Edit/View Labels`: see Edit/View.
+  * `Select Volume`: see [Select Volume](#select-volume)
+  * `Edit/View Labels`: see[Edit/View Labels](#select-volume)
   * `Draw Line`: see Draw Line.
   * `Render/Export`: see Render/Export.
+  * `View Point Cloud`: see
   * a `?` button: this button will direct you to this repository and readme documentation.
   
   ![Image of Main Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/52e50232f70f1181900d37183f385c8311e2cfbd/5LM8NSSPHYK7F1Tk6wDMWapX95uX_1i72NGmp0vEPue0i4H4XdKcnLZjElpvhE3AkI8uStRGPqCTLEp3Gy7mfDQL-4KT0yHWYlaUdmEhQENTtlAZXpWwi-kOLCGN4aY0ZYp8qnxBzYY.png)
@@ -39,6 +40,13 @@ All functionality is contained within an application that can be run as an execu
 #### Select Volume:
 Upon clicking select volume
 
+#### Edit/View Labels:
+
+#### Draw Line:
+
+#### Render/Export:
+
+#### View Point Cloud:
 
 
 
