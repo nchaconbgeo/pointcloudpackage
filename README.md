@@ -31,10 +31,10 @@ upon launching the application, you will be see an import file menu to load your
 ###Main Menu:
 after importing a file for use in GeoPointClouds, you will be directed to the main menu. The main menu has the following functionalities:
   * `Select Volume`: see [Select Volume](#select-volume)
-  * `Edit/View Labels`: see[Edit/View Labels](#edit-view-labels)
-  * `Draw Line`: see Draw Line.
-  * `Render/Export`: see Render/Export.
-  * `View Point Cloud`: see
+  * `Edit/View Labels`: see [Edit/View Labels](#editview-labels)
+  * `Draw Line`: see [Draw Line](#draw-line)
+  * `Render/Export`: see [Render/Export](#render-export)
+  * `View Point Cloud`: see [View Point Cloud](#view-point-cloud)
   * a `?` button: this button will direct you to this repository and readme documentation.
   
   ![Image of Main Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/52e50232f70f1181900d37183f385c8311e2cfbd/5LM8NSSPHYK7F1Tk6wDMWapX95uX_1i72NGmp0vEPue0i4H4XdKcnLZjElpvhE3AkI8uStRGPqCTLEp3Gy7mfDQL-4KT0yHWYlaUdmEhQENTtlAZXpWwi-kOLCGN4aY0ZYp8qnxBzYY.png)
