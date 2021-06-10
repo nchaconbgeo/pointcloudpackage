@@ -17,11 +17,11 @@ GeoPointClouds is a 3D Visualization Software created to perform geological inte
 
 All functionality is contained within an application that can be run as an executable on MacOS and Windows. 
 
-<sup>1</sup> User must specify format in Import File for .txt. 
+<sup>1</sup> User must specify format for .txt files in the [File Import Menu](#file-import-menu) 
 
 ## Basic App Navigation
 
-### File Import Menu: 
+### File Import Menu
 upon launching the application, you will be see an import file menu to load your file in for use. The components of this menu consist of:
   * a `select file` button: this will launch your file explorer to locate the point cloud file. 
   * a `file format` entry box: if you are using a .txt file, this is where you will define the file heading format, such as 'x y z r b g' or 'x y z r g b nx ny nz'
@@ -36,22 +36,28 @@ after importing a file for use in GeoPointClouds, you will be directed to the ma
   * `Render/Export`: see [Render/Export](#renderexport)
   * `View Point Cloud`: see [View Point Cloud](#view-point-cloud)
   * a `?` button: this button will direct you to this repository and readme documentation.
+
+A MacOS 11.0.1 display of the main menu should look like the menu below.
   
   ![Image of Main Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/52e50232f70f1181900d37183f385c8311e2cfbd/5LM8NSSPHYK7F1Tk6wDMWapX95uX_1i72NGmp0vEPue0i4H4XdKcnLZjElpvhE3AkI8uStRGPqCTLEp3Gy7mfDQL-4KT0yHWYlaUdmEhQENTtlAZXpWwi-kOLCGN4aY0ZYp8qnxBzYY.png)
+  
+#### Select Volume
+Upon clicking `Select Volume`
 
-#### Select Volume:
-Upon clicking select volume
+#### Edit/View Labels
+Upon clicking `Edit/View labels`
 
-#### Edit/View Labels:
-
-#### Draw Line:
+#### Draw Line
+Upon clicking `Draw Line`
 
 #### Render/Export:
+Upon clicking `Render/Export`
 
 #### View Point Cloud:
+Upon clicking `View Point Cloud`
 
 
 
 ## Developer Documentation
 
-*Message for Developers:* Documentation for code can be found either within the code, or in a sphinx format in _build/html/index.html
+*Message for Developers:* Documentation for code can be found either within the code, or consolidated in a sphinx html format in _build/html/index.html
