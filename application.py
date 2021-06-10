@@ -64,6 +64,7 @@ class Application:
         :Description: callback function to create a visualizer to view the cloud without editing
         """
         self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
+        self.open3dVis = o3d.visualization.Visualizer() #create visualizer object
         visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user. 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
 

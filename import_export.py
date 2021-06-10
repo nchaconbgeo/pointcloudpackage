@@ -62,7 +62,7 @@ def readData(fileName, fileFormat):
         #Renames file when creating sliced file. 
         newFile = fileName.replace(".txt", "." + fileFormat.lower())
         newFile = newFile.replace(" ", "")
-        pcd = txtToPcd(fileName, newFile, fileFormat)  
+        pcd = txtToPcd(fileName, newFile, fileFormat, 1e6)  
     else:
         pcd = readPointCloud(fileName)
     originalColors = pcd.colors
@@ -118,12 +118,13 @@ def parseFormat(format):
         return ([x_location, y_location, z_location, r_location, g_location, b_location], InputFormat.XYZ_R_G_B)
 
 
-def writeContents(reader, writer, indices, inputFormat):
+def writeContents(reader, writer, indices, inputFormat, showProgressIncrement = 0):
     """
     :Description: Responsible for writing the numeric contents of the given txt file to the pcd file
     :param reader: (TextIOWrapper) TextIOWrapper obtained from running open(filename, "r")
     :param writer: (TextIOWrapper) TextIOWrapper obtained from running open(filename, "w")
     :param indices: (list(int)) array of data locations.
+    :
     :param inputFormat: (inputFormat) type of input data 
     :returns: None\n
     """
@@ -137,9 +138,7 @@ def writeContents(reader, writer, indices, inputFormat):
 
     outputCount = len(indices)
 
-    totalCount = 0
-    missedLines = 0
-
+    lineCount = 0
     for line in reader:
         if len(line) == 0 or (len(line) >= 2 and line[0] == '/' and line [1] == '/') or (len(line) >= 1 and line[0] == '#'):
             print("Comment found: " + line)
@@ -172,6 +171,13 @@ def writeContents(reader, writer, indices, inputFormat):
         outputCount += 1
         output = str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255)  
         writer.write(output + "\n")
+
+        lineCount += 1
+        if(lineCount % showProgressIncrement == 0 and showProgressIncrement != 0):
+            print(str(lineCount) + " lines processed. ")
+    
+    if(showProgressIncrement != 0):
+        print("finished processing a total of "  + str(lineCount) + " lines.")
     return outputCount
 
 def getPcd(pcdFile):
@@ -185,7 +191,7 @@ def getPcd(pcdFile):
 
     return o3d.io.read_point_cloud(pcdFile)
 
-def txtToPcd(textfile, pcdfile, inputFormat):
+def txtToPcd(textfile, pcdfile, inputFormat, showProgressIncrement = 0):
     """
     :Description: Converts the given text file to a pcd file suitible to be read in by Open3d
     :param textfile: Path to the textfile to be converted (String)
@@ -218,7 +224,7 @@ def txtToPcd(textfile, pcdfile, inputFormat):
     indices = format[0]
     inputType = format[1]
     
-    writeContents(reader, writer, indices, inputType)
+    writeContents(reader, writer, indices, inputType, showProgressIncrement)
 
     reader.close()
     writer.close()

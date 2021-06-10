@@ -25,21 +25,23 @@ class PointData:
             self.hashMap[tup] = i
         
 
-        
-
     def processLabels(self, visualizer, classificationIndex):
         """
         :description:
         :param visualizer: visualizer of type open3d.visualization.visualizerWithEditing()
         :param selectedClassification: 
-
         """
+
         #Open3D VisualizerwithEditing()
         #volume selection - math or open3d bounding polygon case
         #assign colors and labels to points within volume selection
 
         picked = visualizer.get_picked_points()
         pickedPointsIndices = []
+
+
+        if(len(picked) < 4): #4 points needed to create a convex hull
+            return
 
         #defining the list of the points gathered (linepoints) for the lineset and bounding polygon. 
         for i in picked:
