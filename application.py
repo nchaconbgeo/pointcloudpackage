@@ -1,3 +1,4 @@
+from GUI.Classification.classification import Classification
 import tkinter as tk
 from GUI import file_select, home_screen
 import import_export
@@ -35,12 +36,38 @@ class Application:
             return
 
         self.fileSelect.frame.destroy()
+
         self.open3dVis = o3d.visualization.Visualizer()
         self.geometriesList.append(self.pointData.pointCloud)
 
-        #Visualize object for user. 
-        visualization.visualize(self.open3dVis, self.geometriesList)
         self.homeScreen = home_screen.HomeScreen(self.root, self, closeFunction = self.closeApp)
+
+
+
+
+    def startViewer(self):
+        self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
+        visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user. 
+        self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
+
+    def startVolumeSelector(self):
+        self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
+
+        self.open3dVis = o3d.visualization.VisualizerWithEditing()
+
+        visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user.
+
+        color = "#"
+        for i in range(6):
+            import random
+            index = random.randint(0, 15)
+            color = color + ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
+
+        self.pointData.classifications.append(Classification(color=color))
+        self.pointData.processLabels(self.open3dVis, len(self.pointData.classifications) - 1)
+
+        self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
+
 
 if(__name__ == "__main__"):
     app = Application()

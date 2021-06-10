@@ -58,16 +58,15 @@ class PointData:
         #TODO: hashmap for volume selection and comparison to generate labels and process colors for each point.
         cloudColor = self.classifications[classificationIndex].color
         
+        floatArray = tuple(float(int(cloudColor[i:i+2], 16)) / 255 for i in (1, 3, 5))
+        rgbArray = np.asarray(floatArray)
+
         for point in croppedPcd.points:
             tup = (point[0], point[1], point[2])
             index = self.hashMap[tup]
             self.labels[index] = classificationIndex
-            self.pointCloud.colors[index] = cloudColor
 
-
-
-    
-
+            self.pointCloud.colors[index] = rgbArray
     
     #def processColors(self):
 

@@ -36,7 +36,7 @@ class ClassificationMenu:
 
 
         for classification in self.app.pointData.classifications:
-            button = tk.Button(self.frame, text = classification.name, highlightbackground = classification.color, width = self.BUTTON_WIDTH, height = 0, command = partial(self.editButton, i), pady=5)
+            button = tk.Button(self.frame, text = classification.name, bg = classification.color,highlightbackground = classification.color, width = self.BUTTON_WIDTH, height = 0, command = partial(self.editButton, i), pady=5)
             button.grid(row = i + 1, column = 0, padx = 5) #0th slot taken up by label
             self.classificationButtons.append(button)
             i += 1

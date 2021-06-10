@@ -12,6 +12,7 @@ class HomeScreen:
 
     labelButton = None
     selectVolumeButton = None
+    openVisualizerButton = None
     drawLineButton = None
     exportButton = None
     helpButton = None
@@ -28,6 +29,7 @@ class HomeScreen:
     SELECT_VOLUME_TEXT = "Select Volume"
     DRAW_LINE_TEXT = "Draw Line"
     EXPORT_TEXT = "Render/Export"
+    OPEN_VISUALIZER_TEXT = "View Point Cloud"
 
     HELP_TEXT = "?"
     HELP_SITE = "https://github.com/nchaconbgeo/pointcloudpackage"
@@ -59,8 +61,13 @@ class HomeScreen:
         self.drawLineButton.grid(row = 1, column=1, padx=5)
 
         #adds select volume button to grid
-        self.selectVolumeButton = tk.Button(self.frame, text=self.SELECT_VOLUME_TEXT, width = HomeScreen.BUTTON_WIDTH)
+        self.selectVolumeButton = tk.Button(self.frame, text=self.SELECT_VOLUME_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.app.startVolumeSelector)
         self.selectVolumeButton.grid(row = 2, column=0, padx=5, pady=5)
+
+        #adds open visualizer button to grid
+        self.openVisualizerButton = tk.Button(self.frame, text=self.OPEN_VISUALIZER_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.app.startViewer)
+        self.openVisualizerButton.grid(row = 3, column=0, padx=5, pady=5)
+
 
         #adds export button to grid
         self.exportButton = tk.Button(self.frame, text=self.EXPORT_TEXT, width = HomeScreen.BUTTON_WIDTH)
