@@ -21,15 +21,18 @@ class InvalidFormatError:
     pass
 
 class InputFormat(Enum):
-    XYZ = 1
-    XYZ_R_G_B = 2
-    XYZ_RGB = 3
+    """
+    :Description: Enumerator for data formats
+    """
+    XYZ = 1         #position
+    XYZ_R_G_B = 2   #position and separate RGB channels
+    XYZ_RGB = 3     #position and one decimal RGB value
 
 
 def validFormat(format):
     """
     :Description: Checks if x, y, and z are elements in the fields for parsing. Checks if any 'r' 'g' or 'b' elements are in the format then all 'rgb' values are in format.
-    :param format: format of the file passed in
+    :param format: (str) format of the file passed in
     :Returns: boolean value
     """
     fields = format.lower().split()
@@ -42,8 +45,8 @@ def validFormat(format):
 def readData(fileName, fileFormat):
     """
     :Description: wrapper function to process all data and returns pointData object.
-    :param fileName: name of the file for import of type .pcd, .ply, .txt
-    :param fileFormat: specifies data organization in the file (typically 'xyz' or 'xyzrgb').
+    :param fileName: (str) name of the file for import of type .pcd, .ply, .txt
+    :param fileFormat: (str) specifies data organization in the file (typically 'xyz' or 'xyzrgb').
     :Returns: pointData() object.
     """
     pcd = None
@@ -71,6 +74,12 @@ def readData(fileName, fileFormat):
 
 #return indices [x, y, z], [x, y, z, rgb] or [x, y, z, r, g, b], and the format
 def parseFormat(format):
+    """
+    :Description: Parse string to find index of relevant data
+    :param format: (str) String of space-delimited input ordering (ie "x y z nx ny nz r g b" ).
+    :returns: tuple consisting of array of relevant locations and format
+    """
+
     locations = format.lower().split()
     x_location = locations.index('x')
     y_location = locations.index('y')
@@ -111,10 +120,11 @@ def parseFormat(format):
 
 def writeContents(reader, writer, indices, inputFormat):
     """
-    :description: Responsible for writing the numeric contents of the given txt file to the pcd file
-    :param reader: TextIoWrapper obtained from running open(filename, "r")
-    :param writer: TextIoWrapper obtained from running open(filename, "w")
-    :param format: Dictionary of format tokens to indices.
+    :Description: Responsible for writing the numeric contents of the given txt file to the pcd file
+    :param reader: (TextIOWrapper) TextIOWrapper obtained from running open(filename, "r")
+    :param writer: (TextIOWrapper) TextIOWrapper obtained from running open(filename, "w")
+    :param indices: (list(int)) array of data locations.
+    :param inputFormat: (inputFormat) type of input data 
     :returns: None\n
     """
 

@@ -3,7 +3,10 @@ import webbrowser
 import application
 
 class HomeScreen:
-
+    """
+    :description: Class to manage allow user to access most other functionalities, like viewing, volume select, classification menu, exporting, drawing lines. 
+    :interracts with: ClassificationMenu, PointData, Visualizer
+    """ 
     app = None
 
     frame = None
@@ -18,6 +21,8 @@ class HomeScreen:
     helpButton = None
 
     windowTitle = None
+
+    closeFunction = None
 
     classificationMenu = None
 
@@ -37,13 +42,28 @@ class HomeScreen:
     BUTTON_WIDTH = 14
 
     def openClassificationMenu(self):
+        """
+        :description: open classification menu for labeling
+        """ 
         import GUI.Classification.classification_menu
         classificationMenu = GUI.Classification.classification_menu.ClassificationMenu(self.frame, self.app)
 
     def openHelpSite(self):
         webbrowser.open(HomeScreen.HELP_SITE, new=1)        
+    
+    def runCloseFunction(self):
+        """
+        :description: run the callback function if the user exits out of the window, if it's been set
+        """ 
+        self.frame.destroy()
+        if(self.closeFunction != None):
+            self.closeFunction()
 
     def __init__(self, root, app, closeFunction = None):
+        """
+        :description: Create all the widgets for the home screen and display it to the user
+        :return: HomeScreen
+        """ 
         self.app = app
         self.frame = tk.Toplevel(root) # window
         self.frame.title(HomeScreen.WINDOW_NAME)
@@ -78,6 +98,12 @@ class HomeScreen:
 
         #disable resizing
         self.frame.resizable(False, False) 
+
+        #add close callback
+        if(closeFunction != None):
+            self.closeFunction = closeFunction
+            self.frame.protocol("WM_DELETE_WINDOW", self.runCloseFunction)
+
 
 if __name__ == "__main__" :
     root = tk.Tk()

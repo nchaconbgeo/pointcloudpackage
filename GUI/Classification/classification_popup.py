@@ -5,7 +5,7 @@ from GUI.Classification import classification
 
 class ClassificationPopup:
     """
-    :description: Static class to manage classification popups. Data is written statically so it can be easily accessed after popup is finished. 
+    :Description: Static class to manage classification popups. Data is written statically so it can be easily accessed after popup is finished. 
     :interracts with: Classification, ClassificationMenu
     """ 
 
@@ -32,17 +32,13 @@ class ClassificationPopup:
 
     def toClassification():
         """
-        :description: Returns the inputted data to the popup as a Classification 
-        :return: Classification of inputted data.
-        :rtype: Classification.Classification
+        :Description: Returns the inputted data to the popup as a Classification 
         """ 
         return classification.Classification(name = ClassificationPopup.nameField.get(), description = ClassificationPopup.descriptionField.get("1.0", "end-1c"), color = ClassificationPopup.chosenColor)
 
     def pickColor():
         """
-        :description: Open a popup window and save the result
-        :return: None
-        :rtype: None
+        :Description: Open a popup window and save the result
         """ 
 
         Color = colorchooser.askcolor(title = ClassificationPopup.COLOR_TEXT)[1] #color code is the 2nd argument returned by the color chooser
@@ -52,9 +48,7 @@ class ClassificationPopup:
 
     def close():
         """
-        :description: Close the frame and destroy all widgets within it
-        :return: None
-        :rtype: None
+        :Description: Close the frame and destroy all widgets within it
         """ 
         if ClassificationPopup.frame != None:
             ClassificationPopup.frame.destroy()
@@ -63,14 +57,11 @@ class ClassificationPopup:
 
     def __init__(self, root, doneFunction, currentClassification = None ):
         """
-        :description: Create all the widgets for a  classification popup and display it to the user
-        :return: The constructed class
-        :rtype: ClassificationPopup
+        :Description: Create all the widgets for a  classification popup and display it to the user
+        :return: classification_popup
         """ 
-
         if ClassificationPopup.frame != None: #clear any old popups
             ClassificationPopup.frame.destroy()
-
 
         ClassificationPopup.frame = tk.Toplevel(root) # window
 

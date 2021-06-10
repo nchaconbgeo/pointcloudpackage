@@ -4,6 +4,9 @@ import open3d as o3d
 import numpy as np
 
 class PointData:
+    """
+    :Description: Container class for open3d point cloud, per-point classification data, and classification types
+    """
     fileName = ""
     pointCloud = None
     hashMap = {}

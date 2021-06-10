@@ -9,6 +9,11 @@ from functools import partial
 
 
 class ClassificationMenu:
+    """
+    :Description: Menu that contains the functionality for adding and editing labels. 
+    :interracts with: Application, Classification, ClassificationPopup
+    """ 
+
     WINDOW_NAME = "Point Classifications"
     ADD_TEXT = "New Classification"
     BUTTON_WIDTH = 16
@@ -24,7 +29,7 @@ class ClassificationMenu:
 
     def doneAddingClassification(self):
         """
-        :description: callback from the done button, which copies data from the popup and adds it to the list
+        :Description: callback from the done button, which copies data from the popup and adds it to the list
         """ 
 
         self.app.pointData.classifications.append(classificationPopup.ClassificationPopup.toClassification())
@@ -34,7 +39,7 @@ class ClassificationMenu:
 
     def doneModifyingClassification(self, index):
         """
-        :description: callback from the done button, which copies data from the popup into the element at index
+        :Description: callback from the done button, which copies data from the popup into the element at index
         :param index: (int) index of classification to modify
         """ 
         self.app.pointData.classifications[index] = classificationPopup.ClassificationPopup.toClassification()
@@ -43,7 +48,7 @@ class ClassificationMenu:
 
     def rebuildButtons(self):
         """
-        :description: removes up all the old buttons for classification editing and finishing as well as re-adds them in the correct order
+        :Description: removes up all the old buttons for classification editing and finishing as well as re-adds them in the correct order
         """ 
         for button in self.classificationButtons:
             button.destroy()
@@ -65,27 +70,20 @@ class ClassificationMenu:
 
     def editButton(self, index):
         """
-        :description: launch the popup for editing a classification
+        :Description: launch the popup for editing a classification
         :param index: (int) index of classification to modify
         """ 
         classificationPopup.ClassificationPopup(self.root, partial(self.doneModifyingClassification, index), currentClassification=self.app.pointData.classifications[index])
 
     def newClassification(self):
         """
-        :description: launch the popup for creating a new classification
+        :Description: launch the popup for creating a new classification
         """ 
         classificationPopup.ClassificationPopup(self.root, self.doneAddingClassification)
 
-    def modifyClassification(self, index):
-        """
-        :description: launch the popup for editing a classification
-        """ 
-        classificationPopup.ClassificationPopup(self.root, self.done)
-            
-
     def runCloseFunction(self):
         """
-        :description: run the callback function if the user exits out of the window, if it's been set
+        :Description: run the callback function if the user exits out of the window, if it's been set
         """ 
         self.frame.destroy()
         if(self.closeFunction != None):
@@ -93,10 +91,11 @@ class ClassificationMenu:
 
     def __init__(self, root, app, closeFunction = None):
         """
-        :description: Create the menu object that shows classifications
+        :Description: Create the menu object that shows classifications
         :param root: (tkinter.Tk) the root context to create the window in
         :param app: (application) the application, which holds the pointData
         :param closeFunction: (function) a function to run when the window exit is clicked.
+        :return: ClassificationMenu
         """ 
         self.closeFunction = closeFunction
         self.root = root

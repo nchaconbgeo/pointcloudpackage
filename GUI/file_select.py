@@ -2,8 +2,9 @@ import tkinter as tk
 from tkinter import filedialog
 
 class FileSelect:
-    
-
+    """
+    :Description: window to allow the user to select a file from their filesystem along with its exact format
+    """ 
 
     frame = None
     selectedFile = ""
@@ -28,8 +29,7 @@ class FileSelect:
 
     def select_file(self):
         """
-        :description: prompt the user to select a file from their filesystem
-        :return: None
+        :Description: prompt the user to select a file from their filesystem
         """ 
         filetypes = (
             ("text files", "*.txt"),
@@ -52,8 +52,7 @@ class FileSelect:
 
     def runCloseFunction(self):
         """
-        :description: run the specified callback function when the window is closed
-        :return: None
+        :Description: run the specified callback function when the window is closed
         """ 
         self.frame.destroy()
         if(self.closeFunction != None):
@@ -61,9 +60,8 @@ class FileSelect:
 
     def __init__(self, root, doneFunction, closeFunction = None):
         """
-        :description: Create all the widgets for a file selection menu and display it to the user
-        :return: The constructed class
-        :rtype: FileSelect
+        :Description: Create all the widgets for a file selection menu and display it to the user
+        :return: FileSelect
         """ 
 
         if self.frame != None: #clear any old popups

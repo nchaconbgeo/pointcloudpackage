@@ -8,6 +8,9 @@ from Visualization import visualization
 
 
 class Application:
+    """
+    :Description: Central class that manages core functionality and holds data
+    """ 
     root = None
     pointData = None
     fileSelect = None
@@ -15,7 +18,11 @@ class Application:
     geometriesList = []
     homeScreen = None
 
-    def __init__(self):
+    def __init__(self):        
+        """
+        :Description: Create root context and start file select menu
+        :return: Application
+        """ 
         # creates a Tk() object
         self.root = tk.Tk()
         self.root.withdraw()
@@ -24,10 +31,17 @@ class Application:
         tk.mainloop()   
 
     def closeApp(self):
+        """
+        :Description: destroy the root context and any active visualizers
+        """
         #TODO: Open3d -- Clear geometries and kill visualizer (clean-up)
         self.root.destroy()
 
     def doneSelectingFile(self):
+        """
+        :Description: callback function to proceed from selection menu to home screen
+        """
+
         fileFormat = self.fileSelect.formatEntry.get().lower()
         fileName = self.fileSelect.selectedFile
         self.pointData = import_export.readData(fileName, fileFormat)
@@ -46,11 +60,17 @@ class Application:
 
 
     def startViewer(self):
+        """
+        :Description: callback function to create a visualizer to view the cloud without editing
+        """
         self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
         visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user. 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
 
     def startVolumeSelector(self):
+        """
+        :Description: callback function to create a visualizer with editing 
+        """
         self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
 
         self.open3dVis = o3d.visualization.VisualizerWithEditing()
@@ -67,7 +87,6 @@ class Application:
         self.pointData.processLabels(self.open3dVis, len(self.pointData.classifications) - 1)
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
-
 
 if(__name__ == "__main__"):
     app = Application()
