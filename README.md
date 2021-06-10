@@ -33,7 +33,7 @@ after importing a file for use in GeoPointClouds, you will be directed to the ma
   * `Select Volume`: see [Select Volume](#select-volume)
   * `Edit/View Labels`: see [Edit/View Labels](#editview-labels)
   * `Draw Line`: see [Draw Line](#draw-line)
-  * `Render/Export`: see [Render/Export](#render-export)
+  * `Render/Export`: see [Render/Export](#renderexport)
   * `View Point Cloud`: see [View Point Cloud](#view-point-cloud)
   * a `?` button: this button will direct you to this repository and readme documentation.
   
