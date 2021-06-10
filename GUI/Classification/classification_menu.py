@@ -44,8 +44,9 @@ class ClassificationMenu:
         """ 
         self.app.pointData.classifications[index].name = classificationPopup.ClassificationPopup.nameField.get()
         self.app.pointData.classifications[index].description = classificationPopup.ClassificationPopup.descriptionField.get('1.0', 'end-1c')
-        self.app.pointData.classifications[index].color = self.app.pointData.classifications[index].setColor(classificationPopup.ClassificationPopup.chosenColor)
+        self.app.pointData.classifications[index].setColor(classificationPopup.ClassificationPopup.chosenColor)
         self.app.pointData.processColorChange()
+        
         classificationPopup.ClassificationPopup.close()
         self.rebuildButtons()
 

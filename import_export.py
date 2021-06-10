@@ -11,7 +11,7 @@ from enum import Enum
 import numpy as np
 from point_data import PointData
 from tkinter import messagebox
-
+import copy
 
 
 class InvalidFormatError:
@@ -65,7 +65,7 @@ def readData(fileName, fileFormat):
         pcd = txtToPcd(fileName, newFile, fileFormat, 1e6)  
     else:
         pcd = readPointCloud(fileName)
-    originalColors = pcd.colors
+    originalColors = copy.deepcopy(pcd.colors)
     labels = np.zeros(len(pcd.points), dtype = int) 
     pointData = PointData(fileName, pcd, labels, originalColors)
     return pointData

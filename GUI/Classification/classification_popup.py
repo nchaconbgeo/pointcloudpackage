@@ -93,8 +93,6 @@ class ClassificationPopup:
         if(currentClassification != None):
             ClassificationPopup.nameField.insert(0, currentClassification.name)
             ClassificationPopup.descriptionField.insert('insert', currentClassification.description)
-            if(currentClassification.color == None):
-                print("mitch u guessed it")
             ClassificationPopup.chosenColor = currentClassification.color
             ClassificationPopup.colorButton.configure(bg=ClassificationPopup.chosenColor, highlightbackground= ClassificationPopup.chosenColor)
             if (currentClassification.classificationID == 0): 

@@ -68,20 +68,26 @@ class PointData:
         for point in croppedPcd.points:
             tup = (point[0], point[1], point[2])
             index = self.hashMap[tup]
-            if(self.labels[index] == 0):
+            if(classificationIndex == 0):
                 self.pointCloud.colors[index] = self.originalColors[index]
             else:
-                self.labels[index] = classificationIndex
                 self.pointCloud.colors[index] = rgbArray
+            self.labels[index] = classificationIndex
     
 
     def processColorChange(self):
+        print("Processing color")
         for i in range(len(self.pointCloud.points)):
             labelIndex = self.labels[i]
             if(labelIndex != 0):
+
                 originalColor = self.originalColors[i]
                 classificationColor = self.classifications[labelIndex].rgbColor
-                self.pointCloud.colors[i] = originalColor * 0.5 + classificationColor * (1-0.5)
+
+                outputColor = originalColor * 0.9 + classificationColor * (1-0.9)
+
+                self.pointCloud.colors[i] = outputColor
+            #print("\tPoint #" + str(i) + ": classification #" + str(labelIndex) + ", original r:" + str(self.originalColors[i]) + ", final r:" + str(self.pointCloud.colors[i]) )
 
   
 

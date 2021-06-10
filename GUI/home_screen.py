@@ -4,7 +4,7 @@ import application
 
 class HomeScreen:
     """
-    :description: Class to manage allow user to access most other functionalities, like viewing, volume select, classification menu, exporting, drawing lines. 
+    :Description: Class to manage allow user to access most other functionalities, like viewing, volume select, classification menu, exporting, drawing lines. 
     :interracts with: ClassificationMenu, PointData, Visualizer
     """ 
     app = None
@@ -43,7 +43,7 @@ class HomeScreen:
 
     def openClassificationMenu(self):
         """
-        :description: open classification menu for labeling
+        :Description: open classification menu for labeling
         """ 
         import GUI.Classification.classification_menu
         classificationMenu = GUI.Classification.classification_menu.ClassificationMenu(self.frame, self.app)
@@ -53,7 +53,7 @@ class HomeScreen:
     
     def runCloseFunction(self):
         """
-        :description: run the callback function if the user exits out of the window, if it's been set
+        :Description: run the callback function if the user exits out of the window, if it's been set
         """ 
         self.frame.destroy()
         if(self.closeFunction != None):
@@ -61,7 +61,7 @@ class HomeScreen:
 
     def __init__(self, root, app, closeFunction = None):
         """
-        :description: Create all the widgets for the home screen and display it to the user
+        :Description: Create all the widgets for the home screen and display it to the user
         :return: HomeScreen
         """ 
         self.app = app
