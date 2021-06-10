@@ -21,7 +21,7 @@ class ClassificationPopup:
     COLOR_TEXT = "Choose Color"
     DONE_TEXT = "Done"
     
-    defaultColor = "#ff00ff"
+    defaultColor = "#ffffff"
     nameField = None
     descriptionField = None
     colorButton = None
@@ -93,7 +93,13 @@ class ClassificationPopup:
         if(currentClassification != None):
             ClassificationPopup.nameField.insert(0, currentClassification.name)
             ClassificationPopup.descriptionField.insert('insert', currentClassification.description)
+            if(currentClassification.color == None):
+                print("mitch u guessed it")
             ClassificationPopup.chosenColor = currentClassification.color
-            ClassificationPopup.colorButton.configure(bg=ClassificationPopup.chosenColor)
+            ClassificationPopup.colorButton.configure(bg=ClassificationPopup.chosenColor, highlightbackground= ClassificationPopup.chosenColor)
+            if (currentClassification.classificationID == 0): 
+                ClassificationPopup.colorButton.configure(state = 'disabled')
+            
+                
 
         ClassificationPopup.frame.grab_set() # grab focus

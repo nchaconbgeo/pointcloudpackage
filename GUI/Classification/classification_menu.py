@@ -42,7 +42,10 @@ class ClassificationMenu:
         :Description: callback from the done button, which copies data from the popup into the element at index
         :param index: (int) index of classification to modify
         """ 
-        self.app.pointData.classifications[index] = classificationPopup.ClassificationPopup.toClassification()
+        self.app.pointData.classifications[index].name = classificationPopup.ClassificationPopup.nameField.get()
+        self.app.pointData.classifications[index].description = classificationPopup.ClassificationPopup.descriptionField.get('1.0', 'end-1c')
+        self.app.pointData.classifications[index].color = self.app.pointData.classifications[index].setColor(classificationPopup.ClassificationPopup.chosenColor)
+        self.app.pointData.processColorChange()
         classificationPopup.ClassificationPopup.close()
         self.rebuildButtons()
 
@@ -58,6 +61,7 @@ class ClassificationMenu:
         for classification in self.app.pointData.classifications:
             button = tk.Button(self.frame, text = classification.name, bg = classification.color,highlightbackground = classification.color, width = self.BUTTON_WIDTH, height = 0, command = partial(self.editButton, i), pady=5)
             button.grid(row = i + 1, column = 0, padx = 5) #0th slot taken up by label
+           
             self.classificationButtons.append(button)
             i += 1
         
