@@ -1,6 +1,5 @@
 import tkinter as tk
 import numpy as np
-import random
 
 class Classification:
     """
@@ -15,19 +14,12 @@ class Classification:
     description = ''
     rgbColor = None
 
-    def __init__(self, name = 'Unclassified', description = 'Default Classification description', color = None):
+    def __init__(self, name = 'Unclassified', description = 'Default Classification description', color = '#ffffff'):
         """
         :Description: Fill classification container's information.
         :param color: color in hex format. the classification will be randomly assigned a color if no color is provided.
         :return: Classification
-        """ 
-        #if we don't specify a color we assign it a randomized color
-        if color == None:
-            color = "#"
-            for i in range(6):
-                index = random.randint(0, 11)
-                color = color + ('4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
-
+        """
         self.classificationID = Classification.classificationCount
         Classification.classificationCount += 1
         self.name = name

@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import colorchooser
-
+import random
 from GUI.Classification import classification
 
 class ClassificationPopup:
@@ -41,9 +41,9 @@ class ClassificationPopup:
         :Description: Open a popup window and save the result
         """ 
 
-        Color = colorchooser.askcolor(title = ClassificationPopup.COLOR_TEXT)[1] #color code is the 2nd argument returned by the color chooser
-        if Color != None: #cancelling yields a result of None
-            ClassificationPopup.chosenColor = Color
+        color = colorchooser.askcolor(title = ClassificationPopup.COLOR_TEXT)[1] #color code is the 2nd argument returned by the color chooser
+        if color != None: #cancelling yields a result of None
+            ClassificationPopup.chosenColor = color
             ClassificationPopup.colorButton.configure(bg = ClassificationPopup.chosenColor)
 
     def close():
@@ -53,7 +53,6 @@ class ClassificationPopup:
         if ClassificationPopup.frame != None:
             ClassificationPopup.frame.destroy()
             ClassificationPopup.frame = None
-            ClassificationPopup.chosenColor = ClassificationPopup.defaultColor
 
     def __init__(self, root, doneFunction, currentClassification = None ):
         """
@@ -64,6 +63,14 @@ class ClassificationPopup:
             ClassificationPopup.frame.destroy()
 
         ClassificationPopup.frame = tk.Toplevel(root) # window
+
+        #if we don't specify a color we assign it a randomized color
+        self.chosenColor = "#"
+        for i in range(6):
+            index = random.randint(0, 11)
+            self.chosenColor = self.chosenColor + ('4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
+
+
 
         if(currentClassification == None):
             ClassificationPopup.frame.title(ClassificationPopup.WINDOW_NAME_NEW)

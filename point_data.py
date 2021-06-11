@@ -72,26 +72,33 @@ class PointData:
             if(classificationIndex == 0):
                 self.pointCloud.colors[index] = self.originalColors[index]
             else:
-                self.pointCloud.colors[index] = rgbArray
+                self.pointCloud.colors[index] = self.colorTransform(self.originalColors[index], rgbArray)
+            
             self.labels[index] = classificationIndex
     
 
     def processColorChange(self):
+        """
+        :description: When the user changes the color of a class, it runs through every point and recalculates the color.
+        :Returns: none
+        """
         print("Processing color")
         for i in range(len(self.pointCloud.points)):
             labelIndex = self.labels[i]
             if(labelIndex != 0):
-
                 originalColor = self.originalColors[i]
                 classificationColor = self.classifications[labelIndex].rgbColor
-
-                outputColor = originalColor * 0.9 + classificationColor * (1-0.9)
-
-                self.pointCloud.colors[i] = outputColor
-            #print("\tPoint #" + str(i) + ": classification #" + str(labelIndex) + ", original r:" + str(self.originalColors[i]) + ", final r:" + str(self.pointCloud.colors[i]) )
-
-  
-
+                self.pointCloud.colors[i] = self.colorTransform(originalColor, classificationColor)
+               
+    def colorTransform(self, originalColor, classificationColor):
+        """
+        :description: Helper function for changing the color -- defines how much texture should be retained
+        :param originalColor: the original color of a given point
+        :param classificationColor: the color selected by the user in which the point will be changed to.
+        :Returns: none
+        """
+        outputColor = originalColor * 0.4 + classificationColor * (1-0.4)
+        return outputColor
 
 
         

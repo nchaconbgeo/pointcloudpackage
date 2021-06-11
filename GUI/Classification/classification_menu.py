@@ -129,6 +129,7 @@ class ClassificationMenu:
 
         label = tk.Label(self.frame, text = ClassificationMenu.WINDOW_NAME)
         label.grid(row = 0, column = 1)
-
         self.rebuildButtons()
+        
+        self.frame.grab_set()
 
