@@ -28,12 +28,14 @@ class InputFormat(Enum):
     XYZ_R_G_B = 2   #position and separate RGB channels
     XYZ_RGB = 3     #position and one decimal RGB value
 
+def formatString(format):
+    return {InputFormat.XYZ: 'xyz', InputFormat.XYZ_R_G_B: "xyzrgb"}[format]
 
 def validFormat(format):
     """
     :Description: Checks if x, y, and z are elements in the fields for parsing. Checks if any 'r' 'g' or 'b' elements are in the format then all 'rgb' values are in format.
     :param format: (str) format of the file passed in
-    :Returns: boolean value
+    :Returns: boolean
     """
     fields = format.lower().split()
     if not('r' in fields and 'g' in fields and 'b' in fields) and ('r' in fields or 'g' in fields or 'b' in fields):
@@ -41,6 +43,17 @@ def validFormat(format):
     else:
         return ('x' in fields and 'y' in fields and 'z' in fields)
     
+def stringFormat(format):
+    """
+    :Description: checks if the input format has x y z, and r g b and returns the correct format string
+    :param format: (str) format of the file passed in
+    :Returns: str
+    """
+    fields = format.lower().split()
+    if('r' in fields and 'g' in fields and 'b' in fields):
+        return 'xyzrgb'
+    else:
+        return 'xyz'
 
 def readData(fileName, fileFormat):
     """
@@ -58,9 +71,9 @@ def readData(fileName, fileFormat):
         #Checks file format to make sure it is valid with xyz or xyzrgb
         if(not validFormat(fileFormat)):
             messagebox.showerror("Invalid File Format", "Valid Format should contain space-separated values containing at minimum (x,y,z) values. \nInclude a complete set of (r,g,b) values for color; all other fields will be ignored.")
-            return
+            return        
         #Renames file when creating sliced file. 
-        newFile = fileName.replace(".txt", "." + fileFormat.lower())
+        newFile = fileName.replace(".txt", "." + stringFormat(fileFormat))
         newFile = newFile.replace(" ", "")
         pcd = txtToPcd(fileName, newFile, fileFormat, 1e6)  
     else:
@@ -139,6 +152,9 @@ def writeContents(reader, writer, indices, inputFormat, showProgressIncrement = 
     outputCount = len(indices)
 
     lineCount = 0
+
+    colorFormatString = "{:.3f}"
+
     for line in reader:
         if len(line) == 0 or (len(line) >= 2 and line[0] == '/' and line [1] == '/') or (len(line) >= 1 and line[0] == '#'):
             print("Comment found: " + line)
@@ -169,7 +185,9 @@ def writeContents(reader, writer, indices, inputFormat, showProgressIncrement = 
             b = int(fields[indices[5]])
             
         outputCount += 1
-        output = str(x) + " " + str(y) + " " + str(z) + " " + str(r / 255) + " " + str(g / 255) + " " + str(b / 255)  
+
+
+        output = str(x) + " " + str(y) + " " + str(z) + " " + colorFormatString.format(r/255) + " " + colorFormatString.format(g/255) + " " + colorFormatString.format(b/255)  
         writer.write(output + "\n")
 
         lineCount += 1
@@ -229,7 +247,7 @@ def txtToPcd(textfile, pcdfile, inputFormat, showProgressIncrement = 0):
     reader.close()
     writer.close()
 
-    stringRepresentation = {InputFormat.XYZ: 'xyz', InputFormat.XYZ_R_G_B: "xyzrgb"}[inputType] #return order of data (xyz or xyzrgb)
+    stringRepresentation = formatString(inputType) #return order of data (xyz or xyzrgb)
     pcd = readPointCloud(pcdfile, stringRepresentation)
     return pcd 
 
