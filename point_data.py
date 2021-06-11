@@ -13,6 +13,7 @@ class PointData:
     labels = None
     originalColors = None
     classifications = None
+    selectedIndex = 0    #index of selected label
 
     def __init__(self, fileName, pointCloud, labels, originalColors):
         self.fileName = fileName

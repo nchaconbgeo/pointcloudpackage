@@ -77,7 +77,7 @@ class Application:
         self.open3dVis = o3d.visualization.VisualizerWithEditing()
 
         visualization.visualize(self.open3dVis, self.geometriesList) #Visualize object for user.
-        self.pointData.processLabels(self.open3dVis, len(self.pointData.classifications) - 1)
+        self.pointData.processLabels(self.open3dVis, self.pointData.selectedIndex)
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
 

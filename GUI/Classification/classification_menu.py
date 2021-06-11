@@ -23,6 +23,10 @@ class ClassificationMenu:
 
     buttonFrame = None
 
+    radioVar = tk.IntVar()
+
+    showRadioButtons = False
+
     frame = None
     root = None
     app = None
@@ -50,6 +54,10 @@ class ClassificationMenu:
         classificationPopup.ClassificationPopup.close()
         self.rebuildButtons()
 
+    def setCurrentClassification(self):
+        self.app.pointData.selectedIndex = int(self.radioVar.get())
+        print(self.app.pointData.selectedIndex)
+
     def rebuildButtons(self):
         """
         :Description: removes up all the old buttons for classification editing and finishing as well as re-adds them in the correct order
@@ -60,8 +68,13 @@ class ClassificationMenu:
         i = 0 #index of current button
 
         for classification in self.app.pointData.classifications:
+            if self.showRadioButtons:
+                radioButton = tk.Radiobutton(self.frame, text="", variable=self.radioVar, value=i, command=self.setCurrentClassification)
+                radioButton.grid(row=i+1, column=0)
+                self.classificationButtons.append(radioButton)
+            
             button = tk.Button(self.frame, text = classification.name, bg = classification.color,highlightbackground = classification.color, width = self.BUTTON_WIDTH, height = 0, command = partial(self.editButton, i), pady=5)
-            button.grid(row = i + 1, column = 0, padx = 5) #0th slot taken up by label
+            button.grid(row = i + 1, column = 1, padx = 5) #0th slot taken up by label
            
             self.classificationButtons.append(button)
             i += 1
@@ -70,7 +83,7 @@ class ClassificationMenu:
             self.newClassificationButton.destroy()    
 
         self.newClassificationButton = tk.Button(self.frame, text = ClassificationMenu.ADD_TEXT, command = self.newClassification) 
-        self.newClassificationButton.grid(row = i + 1, column = 0) #preceding slots taken up by classifications and label
+        self.newClassificationButton.grid(row = i + 1, column = 1) #preceding slots taken up by classifications and label
 
 
     def editButton(self, index):
@@ -94,7 +107,7 @@ class ClassificationMenu:
         if(self.closeFunction != None):
             self.closeFunction()
 
-    def __init__(self, root, app, closeFunction = None):
+    def __init__(self, root, app, showRadioButtons=True, closeFunction = None):
         """
         :Description: Create the menu object that shows classifications
         :param root: (tkinter.Tk) the root context to create the window in
@@ -105,6 +118,7 @@ class ClassificationMenu:
         self.closeFunction = closeFunction
         self.root = root
         self.app = app
+        self.showRadioButtons = showRadioButtons
         
         self.frame = tk.Toplevel(root)
         self.frame.title(ClassificationMenu.WINDOW_NAME)
@@ -114,7 +128,7 @@ class ClassificationMenu:
             self.frame.protocol("WM_DELETE_WINDOW", self.runCloseFunction)
 
         label = tk.Label(self.frame, text = ClassificationMenu.WINDOW_NAME)
-        label.grid(row = 0, column = 0)
+        label.grid(row = 0, column = 1)
 
         self.rebuildButtons()
 
