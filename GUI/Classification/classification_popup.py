@@ -65,10 +65,10 @@ class ClassificationPopup:
         ClassificationPopup.frame = tk.Toplevel(root) # window
 
         #if we don't specify a color we assign it a randomized color
-        self.chosenColor = "#"
+        ClassificationPopup.chosenColor = "#"
         for i in range(6):
-            index = random.randint(0, 11)
-            self.chosenColor = self.chosenColor + ('4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
+            index = random.randint(0, 15)
+            ClassificationPopup.chosenColor = ClassificationPopup.chosenColor + ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
 
 
 

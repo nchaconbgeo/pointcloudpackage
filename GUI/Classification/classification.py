@@ -25,7 +25,6 @@ class Classification:
         self.name = name
         self.description = description
         self.setColor(color)
-        print(Classification.classificationCount)
 
     def __str__(self):
         """
