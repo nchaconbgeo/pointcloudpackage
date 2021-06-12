@@ -132,4 +132,5 @@ class ClassificationMenu:
         self.rebuildButtons()
         
         self.frame.grab_set()
+        self.frame.resizable(False, False) #disable resizing window
 

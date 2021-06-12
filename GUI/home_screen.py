@@ -9,6 +9,7 @@ class HomeScreen:
     """ 
     app = None
 
+    root = None
     frame = None
 
     homeLabel = None
@@ -25,6 +26,8 @@ class HomeScreen:
     closeFunction = None
 
     classificationMenu = None
+
+    exportMenu = None
 
     WINDOW_NAME = "GeoPointClouds"
 
@@ -46,7 +49,15 @@ class HomeScreen:
         :Description: open classification menu for labeling
         """ 
         import GUI.Classification.classification_menu
-        classificationMenu = GUI.Classification.classification_menu.ClassificationMenu(self.frame, self.app)
+        self.classificationMenu = GUI.Classification.classification_menu.ClassificationMenu(self.root, self.app)
+
+    def openExportMenu(self):
+        """
+        :Description: open export menu for image/point cloud export
+        """ 
+        import GUI.export_menu
+        self.exportMenu = GUI.export_menu.ExportMenu(self.root, self.app, None)
+
 
     def openHelpSite(self):
         webbrowser.open(HomeScreen.HELP_SITE, new=1)        
@@ -64,6 +75,7 @@ class HomeScreen:
         :Description: Create all the widgets for the home screen and display it to the user
         :return: HomeScreen
         """ 
+        self.root = root
         self.app = app
         self.frame = tk.Toplevel(root) # window
         self.frame.title(HomeScreen.WINDOW_NAME)
@@ -90,7 +102,7 @@ class HomeScreen:
 
 
         #adds export button to grid
-        self.exportButton = tk.Button(self.frame, text=self.EXPORT_TEXT, width = HomeScreen.BUTTON_WIDTH)
+        self.exportButton = tk.Button(self.frame, text=self.EXPORT_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.openExportMenu)
         self.exportButton.grid(row = 2, column=1, padx=5)
         
         self.helpButton = tk.Button(self.frame, text=self.HELP_TEXT, command = self.openHelpSite)

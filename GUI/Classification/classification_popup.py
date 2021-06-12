@@ -70,8 +70,6 @@ class ClassificationPopup:
             index = random.randint(0, 15)
             ClassificationPopup.chosenColor = ClassificationPopup.chosenColor + ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')[index]
 
-
-
         if(currentClassification == None):
             ClassificationPopup.frame.title(ClassificationPopup.WINDOW_NAME_NEW)
         else:
@@ -104,7 +102,8 @@ class ClassificationPopup:
             ClassificationPopup.colorButton.configure(bg=ClassificationPopup.chosenColor, highlightbackground= ClassificationPopup.chosenColor)
             if (currentClassification.classificationID == 0): 
                 ClassificationPopup.colorButton.configure(state = 'disabled')
-            
-                
 
         ClassificationPopup.frame.grab_set() # grab focus
+
+        #disable resizing
+        ClassificationPopup.frame.resizable(False, False) 

@@ -56,9 +56,6 @@ class Application:
 
         self.homeScreen = home_screen.HomeScreen(self.root, self, closeFunction = self.closeApp)
 
-
-
-
     def startViewer(self):
         """
         :Description: callback function to create a visualizer to view the cloud without editing
@@ -81,5 +78,6 @@ class Application:
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
 
+#Entry point to run the application
 if(__name__ == "__main__"):
     app = Application()

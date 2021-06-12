@@ -9,5 +9,9 @@ def visualize(visualizer, geometries):
     visualizer.create_window()
     for i in geometries:
         visualizer.add_geometry(i)
+
+    options = visualizer.get_render_option()
+    options.background_color = np.asarray([0.75, 0.85, 0.99])
+    
     visualizer.run()
     visualizer.destroy_window()
