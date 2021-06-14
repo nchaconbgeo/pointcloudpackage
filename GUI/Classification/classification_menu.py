@@ -56,7 +56,6 @@ class ClassificationMenu:
 
     def setCurrentClassification(self):
         self.app.pointData.selectedIndex = int(self.radioVar.get())
-        print(self.app.pointData.selectedIndex)
 
     def rebuildButtons(self):
         """

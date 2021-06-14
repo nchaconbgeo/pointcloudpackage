@@ -34,8 +34,6 @@ class ExportMenu:
     
     exportButton = None
 
-    doneCommand = None
-
     exportPngCommand = None
     exportRecoloredCommand = None
     exportSeparateCommand = None
@@ -50,10 +48,7 @@ class ExportMenu:
             self.exportRecoloredCommand()
         if self.exportSeparate.get() == 1:
             self.exportSeparateCommand()
-
-
-        if self.doneCommand != None:
-            self.doneCommand()
+            
         self.frame.destroy()
 
 

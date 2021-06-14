@@ -60,7 +60,6 @@ class PointData:
         vol.bounding_polygon = o3d.utility.Vector3dVector(boundingPolygon)
         #cropped_pcd 
         croppedPcd = vol.crop_point_cloud(self.pointCloud)
- 
         cloudColor = self.classifications[classificationIndex].color
         
         floatArray = tuple(float(int(cloudColor[i:i+2], 16)) / 255 for i in (1, 3, 5))
@@ -82,7 +81,6 @@ class PointData:
         :description: When the user changes the color of a class, it runs through every point and recalculates the color.
         :Returns: none
         """
-        print("Processing color")
         for i in range(len(self.pointCloud.points)):
             labelIndex = self.labels[i]
             if(labelIndex != 0):
