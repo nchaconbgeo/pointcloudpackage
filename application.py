@@ -1,3 +1,4 @@
+from point_data import PointData
 from GUI.Classification.classification import Classification
 import tkinter as tk
 from GUI import file_select, home_screen
@@ -19,6 +20,7 @@ class Application:
     geometriesList = []
     homeScreen = None
     fileFormat = None
+    fileName = None
 
     def __init__(self):        
         """
@@ -45,8 +47,8 @@ class Application:
         """
 
         self.fileFormat = self.fileSelect.formatEntry.get().lower()
-        fileName = self.fileSelect.selectedFile
-        self.pointData = import_export.readData(fileName, self.fileFormat)
+        self.fileName = self.fileSelect.selectedFile
+        self.pointData = import_export.readData(self.fileName, self.fileFormat)
 
         if self.pointData == None: #if format is invalid, return to file selection menu
             return
@@ -112,20 +114,21 @@ class Application:
         
         fileNameString = fileName.name
         filesList = []
+        
         for i in range(len(self.pointData.classifications)):
             name = self.pointData.classifications[i].name
             f = open(fileNameString + "_%s.txt" % name, "w")
             filesList.append(f)
-
-        #TODO: UTILIZE ORIGINAL FILE AND GET RGBS WORKING
-        for i in range(len(self.pointData.pointCloud.points)):
-            classificationIndex = self.pointData.labels[i] 
-            name = self.pointData.classifications[classificationIndex].name
-            stringOut = str(self.pointData.pointCloud.points[i][0]) + " " + str(self.pointData.pointCloud.points[i][1]) + " " + str(self.pointData.pointCloud.points[i][2])
-            if(import_export.stringFormat(self.fileFormat) == 'xyzrgb'):
-                stringOut = stringOut + " " + str(self.pointData.pointCloud.colors[i][0]) + " " + str(self.pointData.pointCloud.colors[i][1]) + " " + str(self.pointData.pointCloud.colors[i][2]) 
-            stringOut = stringOut + "\n" 
-            filesList[classificationIndex].write(stringOut)
+        
+        originalLines = []
+        count = 0
+        with open(self.fileName, "r") as readFile:
+            for line in readFile:
+                if not '//' in line:
+                    classificationIndex = self.pointData.labels[count] 
+                    filesList[classificationIndex].write(line)
+                    count += 1 
+            
 
         for i in range(len(filesList)):
             filesList[i].close()
