@@ -56,7 +56,7 @@ class HomeScreen:
         :Description: open export menu for image/point cloud export
         """ 
         import GUI.export_menu
-        self.exportMenu = GUI.export_menu.ExportMenu(self.root, self.app, None)
+        self.exportMenu = GUI.export_menu.ExportMenu(self.root, self.app, exportPng=self.app.startViewer, exportRecolored=self.app.exportRecolored)
 
 
     def openHelpSite(self):

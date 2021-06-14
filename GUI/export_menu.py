@@ -34,7 +34,30 @@ class ExportMenu:
     
     exportButton = None
 
-    def __init__(self, root, app, doneCommand):
+    doneCommand = None
+
+    exportPngCommand = None
+    exportRecoloredCommand = None
+    exportSeparateCommand = None
+
+    def doneCommand(self):
+        """
+        :description: Checks which boxes have been checked, and runs the appropriate export command for each.
+        """
+        if self.exportPng.get() == 1:
+            self.exportPngCommand()
+        if self.exportRecolored.get() == 1:
+            self.exportRecoloredCommand()
+        if self.exportSeparate.get() == 1:
+            self.exportSeparateCommand()
+
+
+        if self.doneCommand != None:
+            self.doneCommand()
+        self.frame.destroy()
+
+
+    def __init__(self, root, app, exportPng=None, exportRecolored=None, exportSeparate=None):
         """
         :Description: Create the menu object that shows export options
         :param root: (tkinter.Tk) the root context to create the window in
@@ -43,6 +66,10 @@ class ExportMenu:
         """ 
         self.root = root
         self.app = app
+
+        self.exportPngCommand = exportPng
+        self.exportSeparateCommand = exportSeparate
+        self.exportRecoloredCommand = exportRecolored
         
         self.frame = tk.Toplevel(root)
         self.frame.title(ExportMenu.WINDOW_NAME)
@@ -59,7 +86,7 @@ class ExportMenu:
         self.separateCheckButton = tk.Checkbutton(self.frame, text = ExportMenu.EXPORT_SEPARATE_TEXT, variable = self.exportSeparate)
         self.separateCheckButton.grid(row = 3, column = 0, sticky='W')
 
-        self.exportButton = tk.Button(self.frame, text=ExportMenu.EXPORT_TEXT, command = doneCommand)
+        self.exportButton = tk.Button(self.frame, text=ExportMenu.EXPORT_TEXT, command = self.doneCommand)
         self.exportButton.grid(row=4, column = 0, pady = 5)
         
         self.frame.grab_set()

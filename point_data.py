@@ -99,6 +99,8 @@ class PointData:
         """
         outputColor = originalColor * 0.4 + classificationColor * (1-0.4)
         return outputColor
+    
+    
 
 
         

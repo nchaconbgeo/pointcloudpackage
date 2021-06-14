@@ -5,6 +5,7 @@ import import_export
 import numpy as np
 import open3d as o3d
 from Visualization import visualization
+import os
 
 
 class Application:
@@ -77,6 +78,13 @@ class Application:
         self.pointData.processLabels(self.open3dVis, self.pointData.selectedIndex)
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
+
+    def exportRecolored(self):
+        fileName = tk.filedialog.askopenfilenames(parent=self.root,
+                                     initialdir=os.getcwd(),
+                                     title="Select a file to export",
+                                     filetypes=['.pcd'])
+        o3d.io.write_point_cloud(fileName)
 
 #Entry point to run the application
 if(__name__ == "__main__"):
