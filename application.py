@@ -6,6 +6,7 @@ import import_export
 import numpy as np
 import open3d as o3d
 from Visualization import visualization
+from tkinter import colorchooser
 import os
 
 
@@ -21,6 +22,8 @@ class Application:
     homeScreen = None
     fileFormat = None
     fileName = None
+    LINE_COLOR_PROMPT =  "Choose Line Color"
+    chosenLineColor = None
 
     def __init__(self):        
         """
@@ -81,6 +84,31 @@ class Application:
 
         self.homeScreen.frame.deiconify() #reshow home screen after visualizer closes
 
+
+    def drawLine(self):
+        self.homeScreen.frame.withdraw()  #hide home screen while visualizer is up
+        self.open3dVis = o3d.visualization.VisualizerWithEditing()
+        linePoints, indices = visualization.drawLines(self.open3dVis, self.geometriesList, self.pointData.pointCloud) #Visualize object for user.
+
+        color = colorchooser.askcolor(title = self.LINE_COLOR_PROMPT)[1] #color code is the 2nd argument returned by the color chooser
+        if color != None: #cancelling yields a result of None
+            self.chosenLineColor = color
+        else:
+            self.chosenLineColor = '#ffffff'
+           
+        #convert color from hex to rgb for lineset.
+        rgbColor = np.asarray(tuple(float(int(self.chosenLineColor[i:i+2], 16)) / 255 for i in (1, 3, 5)))
+        colorsList = [rgbColor for i in range(len(indices))]
+
+        lineSet = o3d.geometry.LineSet()
+        lineSet.colors = o3d.utility.Vector3dVector(colorsList)
+        lineSet.points = o3d.utility.Vector3dVector(linePoints)
+        lineSet.lines = o3d.utility.Vector2iVector(indices)
+        self.geometriesList.append(lineSet)
+        self.homeScreen.frame.deiconify()
+
+
+
     def exportRecolored(self):
         fileTypes = (
             ("pcd files", "*.pcd"),
@@ -129,10 +157,8 @@ class Application:
                     filesList[classificationIndex].write(line)
                     count += 1 
             
-
         for i in range(len(filesList)):
             filesList[i].close()
-    
 
 #Entry point to run the application
 if(__name__ == "__main__"):

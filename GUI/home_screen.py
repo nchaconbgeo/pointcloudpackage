@@ -41,7 +41,6 @@ class HomeScreen:
 
     HELP_TEXT = "?"
     HELP_SITE = "https://github.com/nchaconbgeo/pointcloudpackage"
-    
     BUTTON_WIDTH = 14
 
     def openClassificationMenu(self):
@@ -90,7 +89,7 @@ class HomeScreen:
         self.labelButton.grid(row=1, column=0, pady=5, padx=5)
 
         #adds drawLine button to grid
-        self.drawLineButton = tk.Button(self.frame, text=self.DRAW_LINE_TEXT, width = HomeScreen.BUTTON_WIDTH)
+        self.drawLineButton = tk.Button(self.frame, text=self.DRAW_LINE_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.app.drawLine)
         self.drawLineButton.grid(row = 1, column=1, padx=5)
 
         #adds select volume button to grid
@@ -100,7 +99,6 @@ class HomeScreen:
         #adds open visualizer button to grid
         self.openVisualizerButton = tk.Button(self.frame, text=self.OPEN_VISUALIZER_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.app.startViewer)
         self.openVisualizerButton.grid(row = 3, column=0, padx=5, pady=5)
-
 
         #adds export button to grid
         self.exportButton = tk.Button(self.frame, text=self.EXPORT_TEXT, width = HomeScreen.BUTTON_WIDTH, command = self.openExportMenu)

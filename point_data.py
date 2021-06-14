@@ -24,7 +24,6 @@ class PointData:
         for i, point in enumerate(pointCloud.points):
             tup = (point[0], point[1], point[2])
             self.hashMap[tup] = i
-        
 
     def processLabels(self, visualizer, classificationIndex):
         """
