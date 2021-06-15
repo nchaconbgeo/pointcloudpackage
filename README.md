@@ -59,7 +59,9 @@ To view your labeled point cloud after selecting a volume, use `View Point Cloud
   *Todo add image*
 
 #### Edit/View Labels
-Upon clicking `Edit/View labels` 
+Upon clicking `Edit/View labels`, a classification menu will pop up as shown below.
+
+
 
 #### Draw Line
 Upon clicking `Draw Line`, an [open3D VisualizerWithEditing()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.VisualizerWithEditing.html) will appear and you will be able to select the points to form your lines.
