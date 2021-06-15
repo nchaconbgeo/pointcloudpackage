@@ -39,7 +39,7 @@ A MacOS 11.0.1 display of the main menu should look like the menu below.
 #### Select Volume
 Before clicking `Select volume`, you can assign or create a label for the volume selected as well as give the area selected a name, description, and color in the [`Edit/View Labels`](#editview-labels) menu. In the example below, "Sandstone" is selected as the rock type. 
 
-  *Todo add image*
+![Example of Created Classifications](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/classifications_contact.png)
 
 Upon clicking `Select Volume`, you will be directed to an [open3D VisualizerWithEditing()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.VisualizerWithEditing.html) window and the main menu for the app will disappear. At this point you will be able to select the points to form your volume selection on the cloud, as shown in the image below. Note that the application will select your volume for labelling based on a bounding polygon you draw around the points you would like to select. 
 
