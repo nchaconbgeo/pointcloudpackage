@@ -72,6 +72,7 @@ Upon clicking `View Point Cloud`
 
 ## Installation
 This application requires Python version >3.8 to run, with `pip` installed on the computer. 
+### MacOS:
 
 ## Developer Documentation
 
