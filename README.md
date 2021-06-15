@@ -109,6 +109,6 @@ This application requires Python version >3.8 to run, with `pip` installed on th
 ## Open3D Use Help
 [Open3D's documentation](http://www.open3d.org/docs) has some useful information for navigating the open3D window. A simple tutorial on Open3D visualization can be found [here](http://www.open3d.org/docs/latest/tutorial/Basic/visualization.html). For this project, all visualized windows are either open3D.visualization.Visualizer() objects and open3D.visualization.VisualizerWithEditing() objects. Hence, these are the types of visualizers that we recommend getting accustomed to and familiar with the documentation on.
 
-## Developer Documentation
+## Message for Developers
 
-*Message for Developers:* Documentation for code can be found either within the code, or consolidated in a sphinx html format in _build/html/index.html
+Documentation for code can be found either within the code, or consolidated in a sphinx html format in _build/html/index.html
