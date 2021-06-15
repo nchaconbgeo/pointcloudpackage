@@ -10,7 +10,7 @@ GeoPointClouds is a 3D Visualization Software created to perform geological inte
   * Line drawing functionality
   * Graphical User Interface
 
-All functionality is contained within an application that can be run as an executable on MacOS and Windows. To install the software, see [installation]
+All functionality is contained within an application that can be run as an executable on MacOS and Windows. To install the software, see [installation](#installation).
 
 <sup>1</sup> User must specify format for .txt files in the [File Import Menu](#file-import-menu) 
 
