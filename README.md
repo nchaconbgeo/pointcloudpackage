@@ -71,8 +71,13 @@ Upon clicking `Render/Export`
 Upon clicking `View Point Cloud`
 
 ## Installation
-This application requires Python version >3.8 to run, with `pip` installed on the computer. 
-### MacOS:
+This application requires Python version >3.8 to run, with `pip` installed on the computer. The following command block will install all required dependencies for the program.
+
+`pip install open3d`
+`pip install numpy`
+`pip install tkinter`
+`pip install random`
+
 
 ## Developer Documentation
 
