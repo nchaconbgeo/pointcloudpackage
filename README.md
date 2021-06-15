@@ -81,10 +81,10 @@ Some pertinent commands for selecting your line's points include:
  * `shift + right click`: "Undo" your last point selection in your volume selection.
  * `q` key or `esc` key: Close the window when you are finished making your volume selection.
 
-An example of line select is shown below. 
+An example of line select is shown below. The first image is the user selected points before pressing `q` to quit the visualizer and choose a color. The second image is from clicking `View Point Cloud` which now displays the the line set created by connecting the points in order of selection. Note that the +/- button changes the point size in display, which is why point sizes are different in the two examples.
 
-*TODO ADD IMAGE*
-
+![Line Selected](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/points_selection_line.png)
+![Line drawn](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/line_drawn_example.png)
 
 #### Render/Export:
 Upon clicking `Render/Export`, you will be prompted to select how you would like to render the files. 
