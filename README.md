@@ -37,6 +37,10 @@ A MacOS 11.0.1 display of the main menu should look like the menu below.
   ![Image of Main Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/52e50232f70f1181900d37183f385c8311e2cfbd/5LM8NSSPHYK7F1Tk6wDMWapX95uX_1i72NGmp0vEPue0i4H4XdKcnLZjElpvhE3AkI8uStRGPqCTLEp3Gy7mfDQL-4KT0yHWYlaUdmEhQENTtlAZXpWwi-kOLCGN4aY0ZYp8qnxBzYY.png)
   
 #### Select Volume
+Before clicking `Select volume`, you can assign or create a label for the volume selected as well as give the area selected a name, description, and color in the [`Edit/View Labels`](#editview-labels) menu. In the example below, "Sandstone" is selected as the rock type. 
+
+  *Todo add image*
+
 Upon clicking `Select Volume`, you will be directed to an [open3D VisualizerWithEditing()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.VisualizerWithEditing.html) window and the main menu for the app will disappear. At this point you will be able to select the points to form your volume selection on the cloud, as shown in the image below. Note that the application will select your volume for labelling based on a bounding polygon you draw around the points you would like to select. 
 
   *Todo add image*
@@ -50,25 +54,36 @@ Some tips for selecting your volume:
  * Because the polygon selected is three dimensional, selecting points in three dimensions is recommended. 
  * You must choose at least four points to form a polygon that will select a volume effectively
 
-After creating a selection, you can assign or create a label for the volume selected as well as give the area selected a name, description, and color. An example of this is shown in the menu below.
-
-  *Todo add image*
-
 To view your labeled point cloud after selecting a volume, use `View Point Cloud` from the main screen.
 
   *Todo add image*
 
 #### Edit/View Labels
-Upon clicking `Edit/View labels`
+Upon clicking `Edit/View labels` 
 
 #### Draw Line
-Upon clicking `Draw Line`
+Upon clicking `Draw Line`, an [open3D VisualizerWithEditing()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.VisualizerWithEditing.html) will appear and you will be able to select the points to form your lines.
+
+Some pertinent commands for selecting your line's points include:
+ * `shift + left click`: Select a point in the point cloud to begin forming your polygon for volume selection. 
+ * `shift + right click`: "Undo" your last point selection in your volume selection.
+ * `q` key or `esc` key: Close the window when you are finished making your volume selection.
+
+An example of line select is shown below. 
+
+*TODO ADD IMAGE*
+
 
 #### Render/Export:
-Upon clicking `Render/Export`
+Upon clicking `Render/Export`, you will be prompted to select how you would like to render the files. 
+
+The options for file export include:
+  * Export a photo of the point cloud as a .png: You will be able to position the camera in open3D to get the angle you would like for the photo, and then press `q` or `esc` to close the open3D window and save the photo.
+  * Export colored point cloud: the current point cloud will be exported as a .pcd with all color information retained from the user's interactions with the data. 
+  * Export as separate point cloud: the recolored point cloud will be exported, and an individual point cloud will be exported for each class with all original point information. Note that this option creates several files. 
 
 #### View Point Cloud:
-Upon clicking `View Point Cloud`
+Upon clicking `View Point Cloud`, an [open3D Visualizer()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.Visualizer.html) window will display on your screen for displaying the points. To exit this window and go back to the main app, press `q` or `esc`.
 
 ## Installation
 This application requires Python version >3.8 to run, with `pip` installed on the computer. The following command block will install all required dependencies for GeoPointClouds.
