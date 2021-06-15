@@ -59,8 +59,18 @@ To view your labeled point cloud after selecting a volume, use `View Point Cloud
   *Todo add image*
 
 #### Edit/View Labels
-Upon clicking `Edit/View labels`, a classification menu will pop up as shown below.
+Upon clicking `Edit/View labels` for the first time in the application, an empty classification menu will pop up as shown below:
 
+![New Classification Window](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/point_classification_contact.png)
+
+To create a new classification, click the `New Classification` button and a prompt will appear with the fields "Name", "Classification", and "Color". If "Color" is clicked then a color picker menu will appear as well. These two windows are displayed below.
+
+![New Classification Prompt](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/new_type_contact.png)
+![Color Picker](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/color_picker_contact.png)
+
+Once a new classification is added, it will appear in the list and can be selected as the current rock type to be classified by selecting its corresponding radio button to the left of the name. In the example below, two classifications were created, named "Sandstone" and "Mudstone", and the current selected classification for volume selection and labelling is "Sandstone".
+
+![Example of Created Classifications](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/classifications_contact.png)
 
 
 #### Draw Line
