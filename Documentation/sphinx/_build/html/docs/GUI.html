@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GUI package &#8212; GPC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-package">
+<h1>GUI package<a class="headerlink" href="#gui-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GUI.Classification.html">GUI.Classification package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#module-GUI.Classification.classification">GUI.Classification.classification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#gui-classification-classification-menu-module">GUI.Classification.classification_menu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#module-GUI.Classification.classification_popup">GUI.Classification.classification_popup module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#gui-classification-main-module">GUI.Classification.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GUI.Classification.html#module-GUI.Classification">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gui-export-menu-module">
+<h2>GUI.export_menu module<a class="headerlink" href="#gui-export-menu-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-GUI.file_select">
+<span id="gui-file-select-module"></span><h2>GUI.file_select module<a class="headerlink" href="#module-GUI.file_select" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">GUI.file_select.</span></span><span class="sig-name descname"><span class="pre">FileSelect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doneFunction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closeFunction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.file_select.FileSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>window to allow the user to select a file from their filesystem along with its exact format</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.BUTTON_TEXT">
+<span class="sig-name descname"><span class="pre">BUTTON_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Select</span> <span class="pre">File'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.BUTTON_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.BUTTON_WIDTH">
+<span class="sig-name descname"><span class="pre">BUTTON_WIDTH</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.BUTTON_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.DONE_TEXT">
+<span class="sig-name descname"><span class="pre">DONE_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Done'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.DONE_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.ENTRY_WIDTH">
+<span class="sig-name descname"><span class="pre">ENTRY_WIDTH</span></span><em class="property"> <span class="pre">=</span> <span class="pre">25</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.ENTRY_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.FORMAT_TEXT">
+<span class="sig-name descname"><span class="pre">FORMAT_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Format:'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.FORMAT_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.INITIAL_FILE_TEXT">
+<span class="sig-name descname"><span class="pre">INITIAL_FILE_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'None'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.INITIAL_FILE_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.SELECTED_TEXT">
+<span class="sig-name descname"><span class="pre">SELECTED_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Selected</span> <span class="pre">File:'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.SELECTED_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.WINDOW_NAME">
+<span class="sig-name descname"><span class="pre">WINDOW_NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Import</span> <span class="pre">File'</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.WINDOW_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.closeFunction">
+<span class="sig-name descname"><span class="pre">closeFunction</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.closeFunction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.fileLabel">
+<span class="sig-name descname"><span class="pre">fileLabel</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.fileLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.formatEntry">
+<span class="sig-name descname"><span class="pre">formatEntry</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.formatEntry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.formatLabel">
+<span class="sig-name descname"><span class="pre">formatLabel</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.formatLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.runCloseFunction">
+<span class="sig-name descname"><span class="pre">runCloseFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.file_select.FileSelect.runCloseFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>run the specified callback function when the window is closed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.select_file">
+<span class="sig-name descname"><span class="pre">select_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.file_select.FileSelect.select_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>prompt the user to select a file from their filesystem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.selectedFile">
+<span class="sig-name descname"><span class="pre">selectedFile</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.selectedFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.selectedLabel">
+<span class="sig-name descname"><span class="pre">selectedLabel</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.selectedLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.file_select.FileSelect.selectionButton">
+<span class="sig-name descname"><span class="pre">selectionButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.file_select.FileSelect.selectionButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-GUI.home_screen">
+<span id="gui-home-screen-module"></span><h2>GUI.home_screen module<a class="headerlink" href="#module-GUI.home_screen" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">GUI.home_screen.</span></span><span class="sig-name descname"><span class="pre">HomeScreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closeFunction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.home_screen.HomeScreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Class to manage allow user to access most other functionalities, like viewing, volume select, classification menu, exporting, drawing lines.</p>
+</dd>
+<dt class="field-even">Interracts with</dt>
+<dd class="field-even"><p>ClassificationMenu, PointData, Visualizer</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.BUTTON_WIDTH">
+<span class="sig-name descname"><span class="pre">BUTTON_WIDTH</span></span><em class="property"> <span class="pre">=</span> <span class="pre">14</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.BUTTON_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.DRAW_LINE_TEXT">
+<span class="sig-name descname"><span class="pre">DRAW_LINE_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Draw</span> <span class="pre">Line'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.DRAW_LINE_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.EXPORT_TEXT">
+<span class="sig-name descname"><span class="pre">EXPORT_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Render/Export'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.EXPORT_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.HELP_SITE">
+<span class="sig-name descname"><span class="pre">HELP_SITE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'https://github.com/nchaconbgeo/pointcloudpackage'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.HELP_SITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.HELP_TEXT">
+<span class="sig-name descname"><span class="pre">HELP_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'?'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.HELP_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.OPEN_VISUALIZER_TEXT">
+<span class="sig-name descname"><span class="pre">OPEN_VISUALIZER_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'View</span> <span class="pre">Point</span> <span class="pre">Cloud'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.OPEN_VISUALIZER_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.SELECT_VOLUME_TEXT">
+<span class="sig-name descname"><span class="pre">SELECT_VOLUME_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Select</span> <span class="pre">Volume'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.SELECT_VOLUME_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.TITLE_NAME">
+<span class="sig-name descname"><span class="pre">TITLE_NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'GeoPointClouds</span> <span class="pre">--</span> <span class="pre">3D</span> <span class="pre">Visualization</span> <span class="pre">Software'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.TITLE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.VIEW_LABEL_TEXT">
+<span class="sig-name descname"><span class="pre">VIEW_LABEL_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Edit/View</span> <span class="pre">Labels'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.VIEW_LABEL_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.WINDOW_NAME">
+<span class="sig-name descname"><span class="pre">WINDOW_NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'GeoPointClouds'</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.WINDOW_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.app">
+<span class="sig-name descname"><span class="pre">app</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.classificationMenu">
+<span class="sig-name descname"><span class="pre">classificationMenu</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.classificationMenu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.closeFunction">
+<span class="sig-name descname"><span class="pre">closeFunction</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.closeFunction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.drawLineButton">
+<span class="sig-name descname"><span class="pre">drawLineButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.drawLineButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.exportButton">
+<span class="sig-name descname"><span class="pre">exportButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.exportButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.exportMenu">
+<span class="sig-name descname"><span class="pre">exportMenu</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.exportMenu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.helpButton">
+<span class="sig-name descname"><span class="pre">helpButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.helpButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.homeLabel">
+<span class="sig-name descname"><span class="pre">homeLabel</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.homeLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.labelButton">
+<span class="sig-name descname"><span class="pre">labelButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.labelButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.openClassificationMenu">
+<span class="sig-name descname"><span class="pre">openClassificationMenu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.home_screen.HomeScreen.openClassificationMenu" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>open classification menu for labeling</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.openExportMenu">
+<span class="sig-name descname"><span class="pre">openExportMenu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.home_screen.HomeScreen.openExportMenu" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>open export menu for image/point cloud export</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.openHelpSite">
+<span class="sig-name descname"><span class="pre">openHelpSite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.home_screen.HomeScreen.openHelpSite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.openVisualizerButton">
+<span class="sig-name descname"><span class="pre">openVisualizerButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.openVisualizerButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.root">
+<span class="sig-name descname"><span class="pre">root</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.runCloseFunction">
+<span class="sig-name descname"><span class="pre">runCloseFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.home_screen.HomeScreen.runCloseFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>run the callback function if the user exits out of the window, if it’s been set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.selectVolumeButton">
+<span class="sig-name descname"><span class="pre">selectVolumeButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.selectVolumeButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.home_screen.HomeScreen.windowTitle">
+<span class="sig-name descname"><span class="pre">windowTitle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.home_screen.HomeScreen.windowTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-GUI">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-GUI" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">GPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ethan Taylor, Mitch Cutts, Sam Stech.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docs/GUI.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>import_export module &#8212; GPC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-import_export">
+<span id="import-export-module"></span><h1>import_export module<a class="headerlink" href="#module-import_export" title="Permalink to this headline">¶</a></h1>
+<section id="import-export-package">
+<h2>Import/Export package<a class="headerlink" href="#import-export-package" title="Permalink to this headline">¶</a></h2>
+<p>This package includes all the necessary functionality for importing / exporting point cloud data</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="import_export.InputFormat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">InputFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.InputFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Enumerator for data formats</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="import_export.InputFormat.XYZ">
+<span class="sig-name descname"><span class="pre">XYZ</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#import_export.InputFormat.XYZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="import_export.InputFormat.XYZ_RGB">
+<span class="sig-name descname"><span class="pre">XYZ_RGB</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#import_export.InputFormat.XYZ_RGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="import_export.InputFormat.XYZ_R_G_B">
+<span class="sig-name descname"><span class="pre">XYZ_R_G_B</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#import_export.InputFormat.XYZ_R_G_B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="import_export.InvalidFormatError">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">InvalidFormatError</span></span><a class="headerlink" href="#import_export.InvalidFormatError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Raised when the user specifies an invalid file format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.formatString">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">formatString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.formatString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.getPcd">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">getPcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pcdFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.getPcd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pcdFile</strong> – Path to the pcdfile to create a pcd object of.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pcd object that can be used for open3d visualization</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError: If file does not contain appropriate extension</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.parseFormat">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">parseFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.parseFormat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Parse string to find index of relevant data</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>format</strong> – (str) String of space-delimited input ordering (ie “x y z nx ny nz r g b” ).</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple consisting of array of relevant locations and format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.readData">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">readData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileFormat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.readData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>wrapper function to process all data and returns pointData object.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>fileName</strong> – (str) name of the file for import of type .pcd, .ply, .txt</p></li>
+<li><p><strong>fileFormat</strong> – (str) specifies data organization in the file (typically ‘xyz’ or ‘xyzrgb’).</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>pointData() object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.readPointCloud">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">readPointCloud</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.readPointCloud" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Wrapper function to manage open3d’s import functionality.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>filename</strong> – name of the file for import</p></li>
+<li><p><strong>fileFormat</strong> – format of the file (ie. ‘xyz’)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.geometry.PointCloud() object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.stringFormat">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">stringFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.stringFormat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>checks if the input format has x y z, and r g b and returns the correct format string</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>format</strong> – (str) format of the file passed in</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.txtToPcd">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">txtToPcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pcdfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputFormat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showProgressIncrement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.txtToPcd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Converts the given text file to a pcd file suitible to be read in by Open3d</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>textfile</strong> – Path to the textfile to be converted (String)</p></li>
+<li><p><strong>pcdfile</strong> – Path where the output pcd file should be stored (String)</p></li>
+<li><p><strong>inputFormat</strong> – Format of the file being read from (str).  Can be any combination of the following tokens:                     x, y, z, r, g, b, rgb, Nx, Ny, Nz</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.validFormat">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">validFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.validFormat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Checks if x, y, and z are elements in the fields for parsing. Checks if any ‘r’ ‘g’ or ‘b’ elements are in the format then all ‘rgb’ values are in format.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>format</strong> – (str) format of the file passed in</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="import_export.writeContents">
+<span class="sig-prename descclassname"><span class="pre">import_export.</span></span><span class="sig-name descname"><span class="pre">writeContents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputFormat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showProgressIncrement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import_export.writeContents" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Responsible for writing the numeric contents of the given txt file to the pcd file</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>reader</strong> – (TextIOWrapper) TextIOWrapper obtained from running open(filename, “r”)</p></li>
+<li><p><strong>writer</strong> – (TextIOWrapper) TextIOWrapper obtained from running open(filename, “w”)</p></li>
+<li><p><strong>indices</strong> – (list(int)) array of data locations.</p></li>
+</ul>
+</dd>
+</dl>
+<p>:
+:param inputFormat: (inputFormat) type of input data 
+:returns: None</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">GPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ethan Taylor, Mitch Cutts, Sam Stech.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docs/import_export.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>application module &#8212; GPC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-application">
+<span id="application-module"></span><h1>application module<a class="headerlink" href="#module-application" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="application.Application">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">application.</span></span><span class="sig-name descname"><span class="pre">Application</span></span><a class="headerlink" href="#application.Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Central class that manages core functionality and holds data</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.LINE_COLOR_PROMPT">
+<span class="sig-name descname"><span class="pre">LINE_COLOR_PROMPT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Choose</span> <span class="pre">Line</span> <span class="pre">Color'</span></em><a class="headerlink" href="#application.Application.LINE_COLOR_PROMPT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.chosenLineColor">
+<span class="sig-name descname"><span class="pre">chosenLineColor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.chosenLineColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.closeApp">
+<span class="sig-name descname"><span class="pre">closeApp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.closeApp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>destroy the root context and any active visualizers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.doneSelectingFile">
+<span class="sig-name descname"><span class="pre">doneSelectingFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.doneSelectingFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>callback function to proceed from selection menu to home screen</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.drawLine">
+<span class="sig-name descname"><span class="pre">drawLine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.drawLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.exportPng">
+<span class="sig-name descname"><span class="pre">exportPng</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.exportPng" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.exportRecolored">
+<span class="sig-name descname"><span class="pre">exportRecolored</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.exportRecolored" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.exportSeparate">
+<span class="sig-name descname"><span class="pre">exportSeparate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.exportSeparate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.fileFormat">
+<span class="sig-name descname"><span class="pre">fileFormat</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.fileFormat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.fileName">
+<span class="sig-name descname"><span class="pre">fileName</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.fileName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.fileSelect">
+<span class="sig-name descname"><span class="pre">fileSelect</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.fileSelect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.geometriesList">
+<span class="sig-name descname"><span class="pre">geometriesList</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#application.Application.geometriesList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.homeScreen">
+<span class="sig-name descname"><span class="pre">homeScreen</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.homeScreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.open3dVis">
+<span class="sig-name descname"><span class="pre">open3dVis</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.open3dVis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.pointData">
+<span class="sig-name descname"><span class="pre">pointData</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.pointData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.Application.root">
+<span class="sig-name descname"><span class="pre">root</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#application.Application.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.startViewer">
+<span class="sig-name descname"><span class="pre">startViewer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.startViewer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>callback function to create a visualizer to view the cloud without editing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.Application.startVolumeSelector">
+<span class="sig-name descname"><span class="pre">startVolumeSelector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#application.Application.startVolumeSelector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>callback function to create a visualizer with editing</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">GPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ethan Taylor, Mitch Cutts, Sam Stech.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docs/application.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

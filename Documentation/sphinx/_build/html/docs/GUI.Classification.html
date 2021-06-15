@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GUI.Classification package &#8212; GPC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-classification-package">
+<h1>GUI.Classification package<a class="headerlink" href="#gui-classification-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-GUI.Classification.classification">
+<span id="gui-classification-classification-module"></span><h2>GUI.Classification.classification module<a class="headerlink" href="#module-GUI.Classification.classification" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">GUI.Classification.classification.</span></span><span class="sig-name descname"><span class="pre">Classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Unclassified'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Default</span> <span class="pre">Classification</span> <span class="pre">description'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#ffffff'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification.Classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Container class for storing classification info</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.classificationCount">
+<span class="sig-name descname"><span class="pre">classificationCount</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.classificationCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.classificationID">
+<span class="sig-name descname"><span class="pre">classificationID</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.classificationID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.color">
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"> <span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.rgbColor">
+<span class="sig-name descname"><span class="pre">rgbColor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification.Classification.rgbColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.Classification.classification.Classification.setColor">
+<span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexColor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification.Classification.setColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>convert hex color from tkinter interface to an rgb float array and setting the current hex value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="gui-classification-classification-menu-module">
+<h2>GUI.Classification.classification_menu module<a class="headerlink" href="#gui-classification-classification-menu-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-GUI.Classification.classification_popup">
+<span id="gui-classification-classification-popup-module"></span><h2>GUI.Classification.classification_popup module<a class="headerlink" href="#module-GUI.Classification.classification_popup" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">GUI.Classification.classification_popup.</span></span><span class="sig-name descname"><span class="pre">ClassificationPopup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doneFunction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currentClassification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Static class to manage classification popups. Data is written statically so it can be easily accessed after popup is finished.</p>
+</dd>
+<dt class="field-even">Interracts with</dt>
+<dd class="field-even"><p>Classification, ClassificationMenu</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.COLOR_TEXT">
+<span class="sig-name descname"><span class="pre">COLOR_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Choose</span> <span class="pre">Color'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.COLOR_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.DESCRIPTION_HEIGHT">
+<span class="sig-name descname"><span class="pre">DESCRIPTION_HEIGHT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.DESCRIPTION_HEIGHT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.DESCRIPTION_TEXT">
+<span class="sig-name descname"><span class="pre">DESCRIPTION_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Description:'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.DESCRIPTION_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.DONE_TEXT">
+<span class="sig-name descname"><span class="pre">DONE_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Done'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.DONE_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.NAME_TEXT">
+<span class="sig-name descname"><span class="pre">NAME_TEXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Name:'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.NAME_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.TEXT_WIDTH">
+<span class="sig-name descname"><span class="pre">TEXT_WIDTH</span></span><em class="property"> <span class="pre">=</span> <span class="pre">25</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.TEXT_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.WINDOW_NAME_CHANGE">
+<span class="sig-name descname"><span class="pre">WINDOW_NAME_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Edit</span> <span class="pre">Type'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.WINDOW_NAME_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.WINDOW_NAME_NEW">
+<span class="sig-name descname"><span class="pre">WINDOW_NAME_NEW</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'New</span> <span class="pre">Type'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.WINDOW_NAME_NEW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.chosenColor">
+<span class="sig-name descname"><span class="pre">chosenColor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'#ffffff'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.chosenColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.close" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Close the frame and destroy all widgets within it</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.colorButton">
+<span class="sig-name descname"><span class="pre">colorButton</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.colorButton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.defaultColor">
+<span class="sig-name descname"><span class="pre">defaultColor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'#ffffff'</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.defaultColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.descriptionField">
+<span class="sig-name descname"><span class="pre">descriptionField</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.descriptionField" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.nameField">
+<span class="sig-name descname"><span class="pre">nameField</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.nameField" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.output">
+<span class="sig-name descname"><span class="pre">output</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.pickColor">
+<span class="sig-name descname"><span class="pre">pickColor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.pickColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Open a popup window and save the result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GUI.Classification.classification_popup.ClassificationPopup.toClassification">
+<span class="sig-name descname"><span class="pre">toClassification</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Classification.classification_popup.ClassificationPopup.toClassification" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description</dt>
+<dd class="field-odd"><p>Returns the inputted data to the popup as a Classification</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="gui-classification-main-module">
+<h2>GUI.Classification.main module<a class="headerlink" href="#gui-classification-main-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-GUI.Classification">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-GUI.Classification" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">GPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ethan Taylor, Mitch Cutts, Sam Stech.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docs/GUI.Classification.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
