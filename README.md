@@ -43,7 +43,7 @@ Before clicking `Select volume`, you can assign or create a label for the volume
 
 Upon clicking `Select Volume`, you will be directed to an [open3D VisualizerWithEditing()](http://www.open3d.org/docs/latest/python_api/open3d.visualization.VisualizerWithEditing.html) window and the main menu for the app will disappear. At this point you will be able to select the points to form your volume selection on the cloud, as shown in the image below. Note that the application will select your volume for labelling based on a bounding polygon you draw around the points you would like to select. 
 
-  *Todo add image*
+![Points Selected on Cloud]https://github.com/nchaconbgeo/pointcloudpackage/blob/main/VolSelectPoints.png
 
 Some pertinent commands for selecting your volume include:
  * `shift + left click`: Select a point in the point cloud to begin forming your polygon for volume selection. 
@@ -56,7 +56,7 @@ Some tips for selecting your volume:
 
 To view your labeled point cloud after selecting a volume, use `View Point Cloud` from the main screen.
 
-  *Todo add image*
+![Labelled Cloud](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/Volume.png)
 
 #### Edit/View Labels
 Upon clicking `Edit/View labels` for the first time in the application, an empty classification menu will pop up as shown below:
