@@ -50,11 +50,7 @@ Some pertinent commands for selecting your volume include:
  * `shift + right click`: "Undo" your last point selection in your volume selection.
  * `q` key or `esc` key: Close the window when you are finished making your volume selection.
 
-Some tips for selecting your volume:
- * Because the polygon selected is three dimensional, selecting points in three dimensions is recommended. 
- * You must choose at least four points to form a polygon that will select a volume effectively
-
-To view your labeled point cloud after selecting a volume, use `View Point Cloud` from the main screen.
+Note that you must choose at least four points to form a polygon that will select a volume effectively. To view your labeled point cloud after selecting a volume, use `View Point Cloud` from the main screen.
 
 ![Labelled Cloud](https://github.com/nchaconbgeo/pointcloudpackage/blob/main/Volume.png)
 
