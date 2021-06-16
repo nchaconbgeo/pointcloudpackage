@@ -19,9 +19,11 @@ All functionality is contained within an application that can be run as an execu
 ### File Import Menu
 upon launching the application, you will be see an import file menu to load your file in for use. The components of this menu consist of:
   * a `select file` button: this will launch your file explorer to locate the point cloud file. 
-  * a `file format` entry box: if you are using a .txt file, this is where you will define the file heading format, such as 'x y z r b g' or 'x y z r g b nx ny nz'
+  * a `file format` entry box: if you are using a .txt file, this is where you will define the file heading format, such as 'x y z r g b' or 'x y z r g b nx ny nz'
   * a `done` button: click to begin processing your point cloud file for the program. 
 ![Image of File Import Menu](https://github.com/nchaconbgeo/pointcloudpackage/blob/880882d4609b8b2aa132f7eb7d34bdbd2db4bf9d/R3dF8LChjjVPzA0pDqUXoSYy9t1eK2RRW5jquabGel_H5_XPiKdv2jDJfidlsbG88s8_LCcRUvSiqM7aY-i3iiDwUG50hAhSVn_FPrI4dMeyWPMZ6fCetf_L04XTLexrpRpJEQNS_vo(1).png)
+
+*Tips:* when importing a .txt file and providing a format (ie. a txt file named pointcloud.txt with format 'x y z r g b'), GeoPointClouds will automatically generate a new file for your data with the extension of its format, such as 'pointcloud.xyzrgb.txt'. This file will generally be smaller and optimized for the program, and you can use it in the future without supplying the format since the format is specified in the extension. 
 
 ### Main Menu:
 after importing a file for use in GeoPointClouds, you will be directed to the main menu. The main menu has the following functionalities:
@@ -96,10 +98,20 @@ Upon clicking `View Point Cloud`, an [open3D Visualizer()](http://www.open3d.org
 ## Installation
 This application requires Python version >3.8 to run, with `pip` installed on the computer. The following command block will install all required dependencies for GeoPointClouds.
 
-`pip install open3d  
-pip install numpy  
-pip install tk`  
- 
+`pip install open3d numpy tk` 
+
+Next, download this github repository into a folder of your choice. 
+
+`cd ~/my/file/path/example`
+`git clone https://github.com/nchaconbgeo/pointcloudpackage`
+
+To launch the app from here, navigate to the src folder in point cloud package. Assuming you are located in the example directory above (`~/my/file/path/example`), you would use the commands:
+
+`cd pointcloudpackage/src`
+`python3 application.py`
+
+
+### Alternate 
 
 
 ## Open3D Use Help
