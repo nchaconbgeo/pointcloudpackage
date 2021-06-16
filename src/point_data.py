@@ -43,19 +43,35 @@ class PointData:
         if(len(picked) < 4): #4 points needed to create a convex hull
             return
 
+        maxCorner = np.asarray([-np.Inf, -np.Inf, -np.Inf])
+        minCorner = np.asarray([ np.Inf,  np.Inf,  np.Inf])
+
         #defining the list of the points gathered (linepoints) for the lineset and bounding polygon. 
         for i in picked:
+            maxCorner = np.maximum(self.pointCloud.points[i], maxCorner)
+            minCorner = np.minimum(self.pointCloud.points[i], minCorner)
+
             #to access data in a PointCloud() object, you must use the attributes (see pcd.points[i] below).
             pickedPointsIndices.append(self.pointCloud.points[i])
 
         pickedPointsIndices.append(pickedPointsIndices[0]) 
+
+        #Extrude along flattest axis
+        volumeSize = maxCorner - minCorner
+        minVolumeDimension = np.amin(volumeSize)
+        minVolumeIndex = np.where(minVolumeDimension == volumeSize)[0][0] #first occurence of lowest index
+
+        dimension = ['X', 'Y', 'Z'][minVolumeIndex]
+        minCoordinate = minCorner[minVolumeIndex]
+        maxCoordinate = maxCorner[minVolumeIndex]
+
         boundingPolygon = np.asarray(o3d.utility.Vector3dVector(pickedPointsIndices))
         vol = o3d.visualization.SelectionPolygonVolume()
-        vol.axis_max = 0
-        vol.axis_min = 0
-        vol.orthogonal_axis = "Z"
-        vol.axis_max = np.max(boundingPolygon[:, 2])
-        vol.axis_min = np.min(boundingPolygon[:, 2])
+
+
+        vol.orthogonal_axis = dimension
+        vol.axis_max = maxCoordinate
+        vol.axis_min = minCoordinate
         vol.bounding_polygon = o3d.utility.Vector3dVector(boundingPolygon)
         #cropped_pcd 
         croppedPcd = vol.crop_point_cloud(self.pointCloud)
@@ -98,10 +114,3 @@ class PointData:
         return outputColor
     
     
-
-
-        
-
-
-
-
