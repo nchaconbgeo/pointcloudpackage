@@ -102,12 +102,12 @@ This application requires Python version >3.8 to run, with `pip` installed on th
 
 Next, download this github repository into a folder of your choice. 
 
-`cd ~/my/file/path/example`
+`cd ~/my/file/path/example`  
 `git clone https://github.com/nchaconbgeo/pointcloudpackage`
 
 To launch the app from here, navigate to the src folder in point cloud package. Assuming you are located in the example directory above (`~/my/file/path/example`), you would use the commands:
 
-`cd pointcloudpackage/src`
+`cd pointcloudpackage/src`  
 `python3 application.py`
 
 
