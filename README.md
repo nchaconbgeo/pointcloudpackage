@@ -115,9 +115,7 @@ To launch the app from here, navigate to the src folder in point cloud package. 
 
 If you would like a Desktop App to run the app from, you can follow the instructions on this [website.](https://martechwithme.com/convert-python-script-app-windows-mac/)
 
-A video tutorial that outlines the instructions from the website above with specific reference to GeoPointClouds is available below:
-
-TODO ADD VIDEO
+A video tutorial that outlines the instructions from the website above with specific reference to GeoPointClouds is available here: [https://www.youtube.com/watch?v=v9F55mZe7hw](https://www.youtube.com/watch?v=v9F55mZe7hw)
 
 
 ## Open3D Use Help
