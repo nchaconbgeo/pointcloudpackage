@@ -105,13 +105,19 @@ Next, download this github repository into a folder of your choice.
 `cd ~/my/file/path/example`  
 `git clone https://github.com/nchaconbgeo/pointcloudpackage`
 
+### MacOS Quick Start and Windows Use
 To launch the app from here, navigate to the src folder in point cloud package. Assuming you are located in the example directory above (`~/my/file/path/example`), you would use the commands:
 
 `cd pointcloudpackage/src`  
 `python3 application.py`
 
+### MacOS Desktop Icon Creation
 
-### Alternate 
+If you would like a Desktop App to run the app from, you can follow the instructions on this [website.](https://martechwithme.com/convert-python-script-app-windows-mac/)
+
+A video tutorial that outlines the instructions from the website above with specific reference to GeoPointClouds is available below:
+
+TODO ADD VIDEO
 
 
 ## Open3D Use Help
