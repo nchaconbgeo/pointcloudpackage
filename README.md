@@ -96,10 +96,10 @@ Upon clicking `View Point Cloud`, an [open3D Visualizer()](http://www.open3d.org
 ## Installation
 This application requires Python version >3.8 to run, with `pip` installed on the computer. The following command block will install all required dependencies for GeoPointClouds.
 
-`pip install open3d`  
-`pip install numpy`  
-`pip install tkinter`  
-`pip install random`  
+`pip install open3d  
+pip install numpy  
+pip install tk`  
+ 
 
 
 ## Open3D Use Help
